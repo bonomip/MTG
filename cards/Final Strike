@@ -1,0 +1,1 @@
+{"layout":"normal","colorIdentity":["B"],"types":["Sorcery"],"imageName":"final strike","name":"Final Strike","cmc":4,"text":"As an additional cost to cast Final Strike, sacrifice a creature.\nFinal Strike deals damage to target opponent equal to the sacrificed creature's power.","manaCost":"{2}{B}{B}","type":"Sorcery","colors":["Black"]}

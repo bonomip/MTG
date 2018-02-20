@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="370.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label fx:id="cellName" layoutX="3.0" layoutY="7.0" prefHeight="17.0" prefWidth="240.0" text="card name" />
+      <Label fx:id="cellOdds" alignment="CENTER_RIGHT" layoutX="269.0" layoutY="8.0" prefHeight="17.0" prefWidth="102.0" text="0000.2%" textAlignment="RIGHT" />
+   </children>
+</AnchorPane>

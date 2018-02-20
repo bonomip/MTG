@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+  <children>
+    <MenuBar VBox.vgrow="NEVER">
+      <menus>
+        <Menu mnemonicParsing="false" text="File">
+          <items>
+            <MenuItem mnemonicParsing="false" text="New" onAction="#newDeck" />
+            <Menu mnemonicParsing="false" text="Open" fx:id="openDeckMenu"/>
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Quit" onAction="#closeApp" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Help">
+          <items>
+            <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+         <children>
+            <Button layoutX="10.0" layoutY="16.0" mnemonicParsing="false" onAction="#showSearchPane" prefHeight="27.0" prefWidth="100.0" text="Edit" />
+            <Button layoutX="183.0" layoutY="16.0" mnemonicParsing="false" onAction="#showReviewPane" prefHeight="27.0" prefWidth="100.0" text="Review" />
+            <Button layoutX="689.0" layoutY="16.0" mnemonicParsing="false" onAction="#deleteDeck" prefHeight="27.0" prefWidth="100.0" text="Delete" />
+            <Button layoutX="350.0" layoutY="16.0" mnemonicParsing="false" onAction="#showStatsPane" prefHeight="27.0" prefWidth="100.0" text="Stats" />
+            <Button layoutX="518.0" layoutY="16.0" mnemonicParsing="false" onAction="#showOddsPane" prefHeight="27.0" prefWidth="100.0" text="Odds" />
+            <Separator layoutY="58.0" prefHeight="7.0" prefWidth="800.0" />
+
+
+
+
+            <AnchorPane id="mgmtPane" fx:id="deckManagePane" layoutY="70.0" prefHeight="500.0" prefWidth="800.0">
+               <children>
+                  <AnchorPane id="deckPane" layoutX="10.0" layoutY="9.0" prefHeight="480.0" prefWidth="380.0">
+                     <children>
+                        <Label layoutY="-15.0" text="Main deck ( M )" />
+                        <ListView fx:id="mainDeckLV" layoutY="1.0" prefHeight="312.0" prefWidth="380.0" />
+                        <Label layoutY="313.0" text="Side deck ( S )" />
+                        <ListView fx:id="sideDeckLV" layoutY="329.0" prefHeight="154.0" prefWidth="380.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane id="editPane" fx:id="searchPane" layoutX="410.0" layoutY="7.0" prefHeight="480.0" prefWidth="380.0">
+                     <children>
+                        <Label layoutX="155.0" layoutY="6.0" text="Search by: " />
+                        <ComboBox fx:id="searchCB" layoutX="230.0" prefWidth="150.0" />
+                        <TextField style="-fx-prompt-text-fill: derive(-fx-control-inner-background, -30%)" fx:id="searchParam" layoutY="46.0" prefHeight="27.0" prefWidth="262.0" promptText="param"/>
+                        <Button layoutX="288.0" layoutY="46.0" mnemonicParsing="false" onAction="#findCard" prefHeight="27.0" prefWidth="92.0" text="find" />
+                        <ListView fx:id="searchCardLV" layoutY="90.0" prefHeight="262.0" prefWidth="380.0" />
+                        <Button layoutY="370.0" mnemonicParsing="false" onAction="#addPlain" prefHeight="27.0" prefWidth="75.0" text="plains" />
+                        <Button layoutX="76.0" layoutY="370.0" mnemonicParsing="false" onAction="#addIsland" prefHeight="27.0" prefWidth="75.0" text="island" />
+                        <Button layoutX="152.0" layoutY="370.0" mnemonicParsing="false" onAction="#addSwamp" prefWidth="75.0" text="swamp" />
+                        <Button layoutX="228.0" layoutY="370.0" mnemonicParsing="false" onAction="#addMountain" prefHeight="27.0" prefWidth="75.0" text="mountain" />
+                        <Button layoutX="304.0" layoutY="370.0" mnemonicParsing="false" onAction="#addForest" prefWidth="75.0" text="forest" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane id="reviewPane" fx:id="reviewPane" layoutX="410.0" layoutY="7.0" prefHeight="480.0" prefWidth="380.0" visible="false">
+                     <children>
+                        <TextField style="-fx-prompt-text-fill: derive(-fx-control-inner-background, -30%)" fx:id="numberOfCards" layoutY="244.0" prefHeight="27.0" prefWidth="45.0" promptText="n." />
+                        <Button layoutX="230.0" layoutY="244.0" mnemonicParsing="false" onAction="#changeNumberOfCards" prefHeight="27.0" prefWidth="150.0" text="change number" />
+                        <TextArea  editable="false" fx:id="cardInfo" prefHeight="220.0" prefWidth="380.0" text="card info&#10;name&#10;mana&#10;ec..&#10;" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+
+
+
+            <AnchorPane id="statsPane" fx:id="statsPane" layoutY="70.0" prefHeight="500.0" prefWidth="800.0" visible="false">
+               <children>
+                  <AnchorPane id="manaCurvePane" layoutX="10.0" prefHeight="240.0" prefWidth="370.0">
+                     <children>
+                        <LineChart fx:id="manaCurveLineChart" prefHeight="240.0" prefWidth="380.0" title="Mana curve">
+                          <xAxis>
+                            <CategoryAxis side="BOTTOM" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis autoRanging="false" side="LEFT" tickLabelGap="5.0" tickLength="5.0" upperBound="20.0" />
+                          </yAxis>
+                        </LineChart>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane id="manaDistributionPane" layoutX="10.0" layoutY="250.0" prefHeight="240.0" prefWidth="380.0">
+                     <children>
+                        <Label layoutX="127.0" text="Mana color">
+                           <font>
+                              <Font size="24.0" />
+                           </font></Label>
+                        <Label layoutX="10.0" layoutY="40.0" text="Plains : 0 ( 0% )" />
+                        <Label layoutX="10.0" layoutY="60.0" text="Island: 0 ( 0% )" />
+                        <Label layoutX="10.0" layoutY="80.0" text="Swamp: 0 ( 0% )" />
+                        <Label layoutX="10.0" layoutY="100.0" text="Mountain: 0 ( 0% )" />
+                        <Label layoutX="10.0" layoutY="120.0" text="Forest: 0 ( 0% )" />
+                     </children></AnchorPane>
+                  <AnchorPane id="cardTypePane" layoutX="406.0" prefHeight="200.0" prefWidth="380.0">
+                     <children>
+                        <Label layoutX="157.0" text="Cards">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="10.0" layoutY="40.0" text="Artifacts: 0 ( 0% )" />
+                        <Label layoutX="10.0" layoutY="60.0" text="Creatures: 0 ( 0% )" />
+                        <Label layoutX="10.0" layoutY="80.0" text="Enchantements: 0 ( 0% )" />
+                        <Label layoutX="10.0" layoutY="100.0" text="Instant: 0 ( 0% )" />
+                        <Label layoutX="10.0" layoutY="120.0" text="Land: 0 ( 0% )" />
+                        <Label layoutX="10.0" layoutY="140.0" text="Planeswalker: 0 ( 0% )" />
+                        <Label layoutX="10.0" layoutY="160.0" text="Sorcery: 0 ( 0% )" />
+                     </children></AnchorPane>
+                  <AnchorPane id="manaSourcePane" layoutX="406.0" layoutY="182.0" prefHeight="154.0" prefWidth="380.0">
+                     <children>
+                        <Label layoutX="156.0" text="Lands">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="10.0" layoutY="40.0" text="Plains: 0 ( 0% )" />
+                        <Label layoutX="10.0" layoutY="60.0" text="Island: 0 ( 0% )" />
+                        <Label layoutX="10.0" layoutY="80.0" text="Swamp: 0 ( 0% )" />
+                        <Label layoutX="10.0" layoutY="100.0" text="Mountain: 0 ( 0% )" />
+                        <Label layoutX="11.0" layoutY="120.0" text="Forest: 0 ( 0% )" />
+                     </children></AnchorPane>
+               </children>
+            </AnchorPane>
+
+
+
+
+            <AnchorPane fx:id="oddsPane" layoutY="70.0" prefHeight="500.0" prefWidth="800.0" visible="false">
+               <children>
+                  <AnchorPane id="randomHandPane" fx:id="randomHandPane" prefHeight="240.0" prefWidth="370.0">
+                     <children>
+                        <Button layoutX="136.0" layoutY="1.0" mnemonicParsing="false" onAction="#randomHand" text="random hand" />
+                        <AnchorPane layoutY="40.0" prefHeight="200.0" prefWidth="370.0">
+                           <children>
+                              <Label fx:id="rhc1" layoutX="10.0" text="card1" />
+                              <Label fx:id="rhc2" layoutX="10.0" layoutY="30.0" text="card2" />
+                              <Label fx:id="rhc3" layoutX="10.0" layoutY="60.0" text="card3" />
+                              <Label fx:id="rhc4" layoutX="10.0" layoutY="90.0" text="card4" />
+                              <Label fx:id="rhc5" layoutX="10.0" layoutY="120.0" text="card5" />
+                              <Label fx:id="rhc6" layoutX="10.0" layoutY="150.0" text="card6" />
+                              <Label fx:id="rhc7" layoutX="10.0" layoutY="180.0" text="card7" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="oddsNextCardsPane" layoutX="410.0" prefHeight="240.0" prefWidth="380.0">
+                     <children>
+                        <TextField fx:id="outCardName" style="-fx-prompt-text-fill: derive(-fx-control-inner-background, -30%)" prefHeight="27.0" prefWidth="233.0" promptText="card name" />
+                        <Button layoutX="249.0" mnemonicParsing="false" onAction="#addOutCard" prefHeight="27.0" prefWidth="56.0" text="out" />
+                        <ListView fx:id="cardsOddsLV" layoutY="40.0" prefHeight="200.0" prefWidth="380.0" />
+                        <Button layoutX="320.0" layoutY="1.0" mnemonicParsing="false" onAction="#resetOutCards" text="reset" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="oddsDesiredCardPane" layoutX="10.0" layoutY="250.0" prefHeight="240.0" prefWidth="380.0">
+                     <children>
+                        <ListView fx:id="desiredCardsLV" layoutY="56.0" prefHeight="144.0" prefWidth="380.0" />
+                        <TextField fx:id="desiredCardName"  style="-fx-prompt-text-fill: derive(-fx-control-inner-background, -30%)" layoutY="6.0" prefHeight="27.0" prefWidth="303.0" promptText="card name" />
+                        <Button layoutX="335.0" layoutY="6.0" mnemonicParsing="false" onAction="#addDesiredCard" text="add " />
+                        <Label layoutX="1.0" layoutY="40.0" text="desired cards" />
+                        <TextField fx:id="desiredCardsRange" style="-fx-prompt-text-fill: derive(-fx-control-inner-background, -30%)" layoutX="129.0" layoutY="209.0" prefHeight="27.0" prefWidth="34.0" promptText="10" />
+                        <Label layoutY="214.0" text="Odds among the top" />
+                        <Label layoutX="167.0" layoutY="214.0" text="cards: " />
+                        <Label fx:id="desiredCardsOdds" layoutX="209.0" layoutY="214.0" text="0.002%" />
+                     </children>
+                  </AnchorPane>
+                  <Label layoutX="515.0" layoutY="362.0" text="Powered by Paolo Bonomi" />
+               </children>
+            </AnchorPane>
+         </children>
+    </AnchorPane>
+  </children>
+</VBox>
