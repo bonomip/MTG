@@ -6,75 +6,115 @@ import java.util.Arrays;
 
 public class Card {
 
-    public String name;
+    private static int FIELDSIZE = 12;
 
-    public String text; //JSON key: "text"
-
-    public String manaCost; //JSON key: "manaCost"
-
-    public double cmc; //JSON key: "cmc"
-
-    public String[] colors; //JSON key: "colorIdentity"
-
-    public String[] superTypes; //JSON key: "supertypes"
-
-    public String[] types; //JSON key: "types"
-
-    public String[] subTypes; //JSON key: "subtypes"
-
-    public String fullType; //JSON key: "type"
-
-    public String power; //JSON key: "power"
-
-    public String toughness; //JSON key: "toughness"
-
-    public int loyalty; //JSON key: "loyalty"
-
+    private Object[] fields;    // 0 : name
+                                // 1 : manaCost
+                                // 2 : cmc
+                                // 3 : colorIdendity
+                                // 4 : supertypes
+                                // 5 : types
+                                // 6 : subtypes
+                                // 7 : type
+                                // 8 : text
+                                // 9 : power
+                                //10 : toughness
+                                //11 : loyalty
+    public boolean[] flag;
 
     public Card(JSONObject card){
 
-        this.name = card.get("name").toString();
+        fields = new Object[FIELDSIZE];
+        for (Object o : this.fields) o = ""; //prevent null pointer exception
 
-        this.manaCost = card.get("manaCost").toString();
+        flag = new boolean[FIELDSIZE];
 
-        String s = card.get("cmc").toString();
-        this.cmc = (s==null?-1:Double.parseDouble(s));
+        Object name = card.get("name");
+        if(name == null) { flag[0] = false; }
+        else { fields[0] = name; flag[0] = true; }
 
-        this.colors = toStringArray(card, "colorIdentity");
+        Object manaCost = card.get("manaCost");
+        if(manaCost == null) { flag[1] = false; }
+        else { fields[1] = manaCost; flag[1] = true; }
 
-        this.superTypes = toStringArray(card, "supertypes");
+        Object cmc = card.get("cmc");
+        if(cmc == null) { flag[2] = false; }
+        else { fields[2] = cmc; flag[2] = true; }
 
-        this.types = toStringArray(card, "types");
+        Object color = card.get("colorIdentity");
+        if(color == null) { flag[3] = false; }
+        else { fields[3] = color; flag[3] = true; }
 
-        this.subTypes = toStringArray(card, "subtypes");
+        Object spTypes = card.get("supertypes");
+        if(spTypes == null) { flag[4] = false; }
+        else { fields[4] = spTypes; flag[4] = true; }
 
-        this.fullType = card.get("type").toString();
+        Object types = card.get("types");
+        if(types == null) { flag[5] = false; }
+        else { fields[5] = types; flag[5] = true; }
 
-        this.text = card.get("text").toString();
+        Object sbTypes = card.get("subtypes");
+        if(sbTypes == null) { flag[6] = false; }
+        else { fields[6] = sbTypes; flag[6] = true; }
 
-        this.power = card.get("power").toString();
+        Object type = card.get("type");
+        if(type == null) { flag[7] = false; }
+        else { fields[7] = type; flag[7] = true; }
 
-        this.toughness = card.get("toughness").toString();
+        Object text = card.get("text");
+        if(text == null) { flag[8] = false; }
+        else { fields[8] = text; flag[8] = true; }
 
-        s = card.get("loyalty").toString();
-        this.loyalty = (s==null?-1:Integer.parseInt(s));
+        Object power = card.get("power");
+        if(power == null) { flag[9] = false; }
+        else { fields[9] = power; flag[9] = true; }
+
+        Object tough = card.get("toughness");
+        if(tough == null) { flag[10] = false; }
+        else { fields[10] = tough; flag[10] = true; }
+
+        Object loy = card.get("loyalty");
+        if(loy == null) { flag[11] = false; }
+        else { fields[11] = loy; flag[11] = true; }
     }
 
-    private String[] toStringArray(JSONObject from, String what){
-        JSONArray a = (JSONArray) from.get(what);
+    private String[] toStringArray(Object o){
+        JSONArray a = (JSONArray) o;
         String[] r = new String[a.size()];
         for (int i = 0; i < r.length; i++) r[i] = a.get(i).toString();
         return r;
     }
 
+    public String get0(){
+        return this.fields[0].toString();
+    }
+
+    public String get1() { return this.fields[1].toString(); }
+
+    public double get2() { return Double.parseDouble(this.fields[2].toString()); }
+
+    public String[] get3() { return toStringArray(this.fields[3]); }
+
+    public String[] get4() { return toStringArray(this.fields[4]); }
+
+    public String[] get5() { return toStringArray(this.fields[5]); }
+
+    public String[] get6() { return toStringArray(this.fields[6]); }
+
+    public String get7() { return this.fields[7].toString(); }
+
+    public String get8() { return this.fields[8].toString(); }
+
+    public String get9() { return this.fields[9].toString(); }
+
+    public String get10() { return this.fields[10].toString(); }
+
+    public int get11() { return Integer.parseInt(this.fields[11].toString()); }
+
     @Override
     public String toString() {
-        return "Card name: "+this.name+
-                (this.manaCost==null?"":"\nMana cost: "+this.manaCost)+
-                "\nColors: "+ Arrays.toString(this.colors) +
-                "\nType: "+this.fullType+
-                (this.power == null?"":"\nPower: "+this.power)+
-                (this.toughness == null?"":"\nToughness: "+this.toughness)+
-                (this.loyalty == -1?"":"\nLoyalty: "+this.loyalty);
+        String a = "";
+        for ( int i = 0; i < this.flag.length; i++ ) a += this.flag[i] ? this.fields[i].toString()+" " : "";
+        return a;
     }
 }

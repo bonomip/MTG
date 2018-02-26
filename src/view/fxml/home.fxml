@@ -77,7 +77,7 @@
                      <children>
                         <TextField style="-fx-prompt-text-fill: derive(-fx-control-inner-background, -30%)" fx:id="numberOfCards" layoutY="244.0" prefHeight="27.0" prefWidth="45.0" promptText="n." />
                         <Button layoutX="230.0" layoutY="244.0" mnemonicParsing="false" onAction="#changeNumberOfCards" prefHeight="27.0" prefWidth="150.0" text="change number" />
-                        <TextArea  editable="false" fx:id="cardInfo" prefHeight="220.0" prefWidth="380.0" text="card info&#10;name&#10;mana&#10;ec..&#10;" />
+                        <TextArea  editable="false" fx:id="cardInfo" prefHeight="220.0" prefWidth="380.0" text=" Seleziona una carta... " />
                      </children>
                   </AnchorPane>
                </children>

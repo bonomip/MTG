@@ -22,6 +22,7 @@ public class HomeView extends View{
     private Menu openDeckMenu;
 
     private Deck _deck;
+    private Object[] _card;
 
     public void setCurrentDeck(Deck d){
         this._deck = d;
@@ -51,7 +52,7 @@ public class HomeView extends View{
         for( int i = 0; i < d.length; i++ ){
             MenuItem m = new MenuItem(d[i]);
             m.setOnAction(event -> {
-                ctrl.openDeck(m.getText());
+                if( !ctrl.openDeck(m.getText()) ) { Err.show(Err.FILE_NOT_FOUND); return; }
                 showReviewPane(new ActionEvent());
             });
             openDeckMenu.getItems().add(m);
@@ -123,17 +124,21 @@ public class HomeView extends View{
                     this.loader.setController(this);
                     try { this.loader.load(); } catch (IOException e) { e.printStackTrace(); }
                 }
-                this.name.setText(card[0].toString());
+                this.name.setText(((Card)card[0]).get0());
                 this.number.setText(card[1].toString());
                 this.remove.setOnAction(event -> {
-                    _deck.remove(card[0].toString());
+                    _deck.remove(card);
+                    updateDeckCardList();
+                });
+                this.generic.setOnMouseClicked(event -> {
+                    updateDeckCardInfo(card);
                 });
                 setGraphic(this.generic);
             } else setGraphic(null);
         }
     }
 
-    public void updateDeck(){
+    public void updateDeckCardList(){
 
         this.mainDeckLV.getItems().clear();
         this.sideDeckLV.getItems().clear();
@@ -143,6 +148,11 @@ public class HomeView extends View{
             if(dc.get(i)[2].toString().equals("S")) sideL.add(dc.get(i));
             else if(dc.get(i)[2].toString().equals("M")) mainL.add(dc.get(i));
         }
+    }
+
+    public void updateDeckCardInfo(Object[] card){
+        this._card = card;
+        this.cardInfo.setText(card[0].toString());
     }
 
         //seachPane
@@ -171,7 +181,12 @@ public class HomeView extends View{
         //reviewPane
 
     public void changeNumberOfCards(ActionEvent event){
-
+        if(Err.isNumber(this.numberOfCards.getText())) {
+            if(this._card != null && this._deck != null) {
+                this._deck.changeNumberOf(this._card, Integer.parseInt(this.numberOfCards.getText()));
+                this.updateDeckCardList();
+            }
+        }
     }
 
 

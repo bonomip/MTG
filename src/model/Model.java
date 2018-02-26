@@ -4,17 +4,27 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Scanner;
+import java.util.Set;
 
 public class Model {
 
     public final static String DECK_FOLDER = "decks";
+    private final static int CARD_RECORD_SIZE = 3;
+    private final static String SEPARATOR = ";";
 
-    public Model(){}
+    private static JSONObject CARD_DB;
+
+    public Model() throws FileNotFoundException, ParseException, IOException {
+        Object o = new JSONParser().parse(new FileReader("db.json"));
+        CARD_DB = (JSONObject) o;
+    }
 
 
     /**
@@ -42,30 +52,37 @@ public class Model {
 
 
     public Deck getDeck(String deckName) throws FileNotFoundException {
-        return Deck.fromFile("./"+DECK_FOLDER+"/"+deckName);
+
+        String filePath = "./"+DECK_FOLDER+"/"+deckName;
+        File dk = new File(filePath);
+        Scanner sc = new Scanner(dk);
+        StringBuilder s = new StringBuilder();
+        while (sc.hasNext()) s.append(sc.nextLine());
+        String[] par = s.toString().split(SEPARATOR);
+
+        Deck deck = new Deck(par[0], par[1]);
+
+        //3 is card name
+        //4 card number
+        //5 side or main ecc.
+
+        for(int i = 2; i < par.length; i=i+CARD_RECORD_SIZE) deck.addCard(new Object[]{ this.findCardsByName(par[i+0]), par[i+1], par[i+2] });
+
+        return deck;
+
     }
 
+    private Card findCardsByName(String card_name){
 
+        Set e = CARD_DB.keySet();
+        Object[] keys = e.toArray();
 
-    private void findCardsByName(String name){
-        Object object;
+        for(int i = 0; i < keys.length; i++) if(keys[i].toString().matches(card_name)) return new Card((JSONObject) CARD_DB.get(keys[i]));
 
-        try{
-            object = new JSONParser().parse(new FileReader("db.json"));
-        } catch (java.io.FileNotFoundException e) {
-            System.out.print("file not found");
-            e.printStackTrace();
-            return;
-        } catch (org.json.simple.parser.ParseException e){
-            System.out.print("error while parsing db.json");
-            e.printStackTrace();
-            return;
-        } catch (java.io.IOException e){
-            System.out.print("input/output exception while load db.json");
-            return;
-        }
+        System.out.println("No match for the card: "+card_name);
 
-        JSONObject jsonObject = (JSONObject) object;
+        return null;
+
     }
 
             /* //esempio di estrazione di stringhe s
