@@ -2,21 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/view/Err.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/out/production/MTG/View/HomeView$LVCGeneric.class" afterPath="$PROJECT_DIR$/out/production/MTG/View/HomeView$LVCGeneric.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/MTG/View/HomeView.class" afterPath="$PROJECT_DIR$/out/production/MTG/View/HomeView.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/MTG/View/fxml/home.fxml" afterPath="$PROJECT_DIR$/out/production/MTG/View/fxml/home.fxml" />
-      <change beforePath="$PROJECT_DIR$/out/production/MTG/control/Control.class" afterPath="$PROJECT_DIR$/out/production/MTG/control/Control.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/MTG/model/Card.class" afterPath="$PROJECT_DIR$/out/production/MTG/model/Card.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/MTG/model/Deck.class" afterPath="$PROJECT_DIR$/out/production/MTG/model/Deck.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/MTG/model/Model.class" afterPath="$PROJECT_DIR$/out/production/MTG/model/Model.class" />
-      <change beforePath="$PROJECT_DIR$/src/control/Control.java" afterPath="$PROJECT_DIR$/src/control/Control.java" />
-      <change beforePath="$PROJECT_DIR$/src/model/Card.java" afterPath="$PROJECT_DIR$/src/model/Card.java" />
-      <change beforePath="$PROJECT_DIR$/src/model/Deck.java" afterPath="$PROJECT_DIR$/src/model/Deck.java" />
-      <change beforePath="$PROJECT_DIR$/src/model/Model.java" afterPath="$PROJECT_DIR$/src/model/Model.java" />
-      <change beforePath="$PROJECT_DIR$/src/view/HomeView.java" afterPath="$PROJECT_DIR$/src/view/HomeView.java" />
-      <change beforePath="$PROJECT_DIR$/src/view/fxml/home.fxml" afterPath="$PROJECT_DIR$/src/view/fxml/home.fxml" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -254,30 +240,6 @@
               <item name="MTG" type="b2602c69:ProjectViewProjectNode" />
               <item name="MTG" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="MTG" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MTG" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MTG" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MTG" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MTG" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MTG" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MTG" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MTG" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="fxml" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -499,6 +461,14 @@
       <updated>1359379246138</updated>
       <workItem from="1359379250712" duration="1302000" />
     </task>
+    <task id="LOCAL-00001" summary="fix how deck and card .class works">
+      <created>1519682225417</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1519682225418</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -525,11 +495,11 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299285" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3299285" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3299285" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2899878" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2899878" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24969475" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299285" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24969475" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -590,6 +560,8 @@
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
+    <MESSAGE value="fix how deck and card .class works" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix how deck and card .class works" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
