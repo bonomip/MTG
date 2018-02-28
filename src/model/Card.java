@@ -8,6 +8,12 @@ public class Card {
 
     private static int FIELDSIZE = 12;
 
+    public final static String PLAINS = "1";
+    public final static String ISLAND = "2";
+    public final static String SWAMP = "3";
+    public final static String MOUNTAIN = "4";
+    public final static String FOREST = "5";
+
     private Object[] fields;    // 0 : name
                                 // 1 : manaCost
                                 // 2 : cmc
@@ -76,6 +82,87 @@ public class Card {
         Object loy = card.get("loyalty");
         if(loy == null) { flag[11] = false; }
         else { fields[11] = loy; flag[11] = true; }
+    }
+
+    public Card(String basic_mana){
+
+        this.fields = new Object[FIELDSIZE];
+        for (Object o : this.fields) o = ""; //prevent null pointer exception
+
+        this.flag = new boolean[FIELDSIZE];
+
+        switch (basic_mana){
+            case PLAINS:
+                this.fields[0] = "Plains";
+                this.flag[0] = true;
+
+                this.fields[7] = "Basic Land — Plains";
+                this.flag[7] = true;
+
+                this.fields[6] = new String[] { "Plains" };
+                this.flag[6] = true;
+
+                this.fields[3] = new String[] { "W" };
+                this.flag[3] = true;
+            case ISLAND:
+                this.fields[0] = "Island";
+                this.flag[0] = true;
+
+                this.fields[7] = "Basic Land — Island";
+                this.flag[7] = true;
+
+                this.fields[6] = new String[] { "Island" };
+                this.flag[6] = true;
+
+                this.fields[3] = new String[] { "U" };
+                this.flag[3] = true;
+            case SWAMP:
+                this.fields[0] = "Swamp";
+                this.flag[0] = true;
+
+                this.fields[7] = "Basic Land — Swamp";
+                this.flag[7] = true;
+
+                this.fields[6] = new String[] { "Swamp" };
+                this.flag[6] = true;
+
+                this.fields[3] = new String[] { "B" };
+                this.flag[3] = true;
+            case MOUNTAIN:
+                this.fields[0] = "Mountain";
+                this.flag[0] = true;
+
+                this.fields[7] = "Basic Land — Mountain";
+                this.flag[7] = true;
+
+                this.fields[6] = new String[] { "Mountain" };
+                this.flag[6] = true;
+
+                this.fields[3] = new String[] { "R" };
+                this.flag[3] = true;
+            case FOREST:
+                this.fields[0] = "Forest";
+                this.flag[0] = true;
+
+                this.fields[7] = "Basic Land — Forest";
+                this.flag[7] = true;
+
+                this.fields[6] = new String[] { "Forest" };
+                this.flag[6] = true;
+
+                this.fields[3] = new String[] { "G" };
+                this.flag[3] = true;
+        }
+
+        this.fields[2] = 0;
+        this.flag[2] = true;
+
+        this.fields[4] = new String[] { "Basic" };
+        this.flag[4] = true;
+
+        this.fields[5] = new String[] { "Land" };
+        this.flag[5] = true;
+
     }
 
     private String[] toStringArray(Object o){
