@@ -2,7 +2,34 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/decks/420_Black Skies" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/view/NewDeck.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/view/fxml/new_deck.fxml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/view/utils/Err.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/decks/deck1" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/MTG/View/HomeView$LVCGeneric.class" afterPath="$PROJECT_DIR$/out/production/MTG/View/HomeView$LVCGeneric.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/MTG/View/HomeView.class" afterPath="$PROJECT_DIR$/out/production/MTG/View/HomeView.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/MTG/View/StartView$1.class" afterPath="$PROJECT_DIR$/out/production/MTG/View/StartView$1.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/MTG/View/StartView.class" afterPath="$PROJECT_DIR$/out/production/MTG/View/StartView.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/MTG/View/View$Url$Cell.class" afterPath="$PROJECT_DIR$/out/production/MTG/View/View$Url$Cell.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/MTG/View/View$Url.class" afterPath="$PROJECT_DIR$/out/production/MTG/View/View$Url.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/MTG/View/View.class" afterPath="$PROJECT_DIR$/out/production/MTG/View/View.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/MTG/View/fxml/cell/listViewCell-name-nbr-s-m.fxml" afterPath="$PROJECT_DIR$/out/production/MTG/View/fxml/cell/listViewCell-name-nbr-s-m.fxml" />
+      <change beforePath="$PROJECT_DIR$/out/production/MTG/View/fxml/home.fxml" afterPath="$PROJECT_DIR$/out/production/MTG/View/fxml/home.fxml" />
+      <change beforePath="$PROJECT_DIR$/out/production/MTG/control/Control.class" afterPath="$PROJECT_DIR$/out/production/MTG/control/Control.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/MTG/model/Card.class" afterPath="$PROJECT_DIR$/out/production/MTG/model/Card.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/MTG/model/Deck.class" afterPath="$PROJECT_DIR$/out/production/MTG/model/Deck.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/MTG/model/Model.class" afterPath="$PROJECT_DIR$/out/production/MTG/model/Model.class" />
+      <change beforePath="$PROJECT_DIR$/src/control/Control.java" afterPath="$PROJECT_DIR$/src/control/Control.java" />
+      <change beforePath="$PROJECT_DIR$/src/model/Deck.java" afterPath="$PROJECT_DIR$/src/model/Deck.java" />
+      <change beforePath="$PROJECT_DIR$/src/model/Model.java" afterPath="$PROJECT_DIR$/src/model/Model.java" />
+      <change beforePath="$PROJECT_DIR$/src/view/Err.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/view/HomeView.java" afterPath="$PROJECT_DIR$/src/view/HomeView.java" />
+      <change beforePath="$PROJECT_DIR$/src/view/StartView.java" afterPath="$PROJECT_DIR$/src/view/StartView.java" />
+      <change beforePath="$PROJECT_DIR$/src/view/View.java" afterPath="$PROJECT_DIR$/src/view/View.java" />
+      <change beforePath="$PROJECT_DIR$/src/view/fxml/cell/listViewCell-name-nbr-s-m.fxml" afterPath="$PROJECT_DIR$/src/view/fxml/cell/listViewCell-name-nbr-s-m.fxml" />
+      <change beforePath="$PROJECT_DIR$/src/view/fxml/home.fxml" afterPath="$PROJECT_DIR$/src/view/fxml/home.fxml" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -59,72 +86,7 @@
     <favorites_list name="JavaFxApplication" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="HomeView.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/view/HomeView.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="259">
-              <caret line="182" column="54" lean-forward="false" selection-start-line="182" selection-start-column="54" selection-end-line="182" selection-end-column="54" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#HomeView#0;class#HomeView#0" expanded="false" />
-                <element signature="method#setUpDeckManagePane#0;class#HomeView#0" expanded="false" />
-                <element signature="class#LVCGeneric#0;class#HomeView#0" expanded="false" />
-                <element signature="method#updateItem#0;class#LVCGeneric#0;class#HomeView#0" expanded="false" />
-                <element signature="method#updateDeckCardList#0;class#HomeView#0" expanded="false" />
-                <element signature="method#updateDeckCardInfo#0;class#HomeView#0" expanded="false" />
-                <element signature="method#findCard#0;class#HomeView#0" expanded="false" />
-                <element signature="method#addPlain#0;class#HomeView#0" expanded="false" />
-                <element signature="method#addIsland#0;class#HomeView#0" expanded="false" />
-                <element signature="method#addSwamp#0;class#HomeView#0" expanded="false" />
-                <element signature="method#addMountain#0;class#HomeView#0" expanded="false" />
-                <element signature="method#addForest#0;class#HomeView#0" expanded="false" />
-                <element signature="method#changeNumberOfCards#0;class#HomeView#0" expanded="false" />
-                <element signature="e#5619#5620#0" expanded="true" />
-                <element signature="e#5646#5647#0" expanded="true" />
-                <element signature="method#showSearchPane#0;class#HomeView#0" expanded="false" />
-                <element signature="method#showReviewPane#0;class#HomeView#0" expanded="false" />
-                <element signature="method#showStatsPane#0;class#HomeView#0" expanded="false" />
-                <element signature="method#showOddsPane#0;class#HomeView#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Deck.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/Deck.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="32" column="59" lean-forward="false" selection-start-line="32" selection-start-column="59" selection-end-line="32" selection-end-column="59" />
-              <folding>
-                <element signature="method#Deck#0;class#Deck#0" expanded="false" />
-                <element signature="e#701#702#0" expanded="true" />
-                <element signature="e#743#744#0" expanded="true" />
-                <element signature="method#changeNumberOf#0;class#Deck#0" expanded="false" />
-                <element signature="e#981#982#0" expanded="true" />
-                <element signature="e#1008#1009#0" expanded="true" />
-                <element signature="e#1056#1057#0" expanded="true" />
-                <element signature="e#1087#1088#0" expanded="true" />
-                <element signature="method#toString#0;class#Deck#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="home.fxml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/view/fxml/home.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="331">
-              <caret line="79" column="135" lean-forward="false" selection-start-line="79" selection-start-column="135" selection-end-line="79" selection-end-column="135" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -151,10 +113,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/View/homeView.java" />
-        <option value="$PROJECT_DIR$/src/Controller.java" />
-        <option value="$PROJECT_DIR$/src/View/fxml/deckListViewCell.fxml" />
-        <option value="$PROJECT_DIR$/src/JSONController.java" />
         <option value="$PROJECT_DIR$/src/StartController.java" />
         <option value="$PROJECT_DIR$/src/CardController.java" />
         <option value="$PROJECT_DIR$/src/CardControl.java" />
@@ -188,25 +146,29 @@
         <option value="$PROJECT_DIR$/src/Model/Card.java" />
         <option value="$PROJECT_DIR$/src/View/HomeView.java" />
         <option value="$PROJECT_DIR$/src/view/fxml/cell/ListViewCell-name-nbr-s-m.fxml" />
-        <option value="$PROJECT_DIR$/src/view/View.java" />
         <option value="$PROJECT_DIR$/src/view/fxml/cell/listViewCell-name-odd.fxml" />
-        <option value="$PROJECT_DIR$/src/view/fxml/cell/listViewCell-name-nbr-s-m.fxml" />
         <option value="$PROJECT_DIR$/src/view/fxml/cell/listViewCell-name-nbr-rm.fxml" />
         <option value="$PROJECT_DIR$/src/Util.java" />
         <option value="$PROJECT_DIR$/src/Err.java" />
+        <option value="$PROJECT_DIR$/src/view/Check.java" />
+        <option value="$PROJECT_DIR$/src/view/Err.java" />
+        <option value="$PROJECT_DIR$/src/view/StartView.java" />
+        <option value="$PROJECT_DIR$/src/view/fxml/cell/listViewCell-name-nbr-s-m.fxml" />
+        <option value="$PROJECT_DIR$/src/view/fxml/new_deck.fxml" />
+        <option value="$PROJECT_DIR$/src/view/View.java" />
+        <option value="$PROJECT_DIR$/src/view/utils/Err.java" />
+        <option value="$PROJECT_DIR$/src/view/NewDeck.java" />
+        <option value="$PROJECT_DIR$/src/model/Deck.java" />
         <option value="$PROJECT_DIR$/src/control/Control.java" />
         <option value="$PROJECT_DIR$/src/model/Model.java" />
         <option value="$PROJECT_DIR$/src/model/Card.java" />
-        <option value="$PROJECT_DIR$/src/view/fxml/home.fxml" />
-        <option value="$PROJECT_DIR$/src/view/Check.java" />
-        <option value="$PROJECT_DIR$/src/view/Err.java" />
-        <option value="$PROJECT_DIR$/src/model/Deck.java" />
         <option value="$PROJECT_DIR$/src/view/HomeView.java" />
+        <option value="$PROJECT_DIR$/src/view/fxml/home.fxml" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds" fullScreen="true">
+  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
     <option name="x" value="4" />
     <option name="width" value="1612" />
     <option name="height" value="876" />
@@ -230,9 +192,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -240,11 +199,19 @@
               <item name="MTG" type="b2602c69:ProjectViewProjectNode" />
               <item name="MTG" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="MTG" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MTG" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="AndroidView" />
       <pane id="Scratches" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -292,7 +259,7 @@
     <configuration name="HomeView" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="view.*" />
+          <option name="PATTERN" value="view.utils.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -332,7 +299,7 @@
     <configuration name="StartView" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="view.*" />
+          <option name="PATTERN" value="view.utils.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -475,7 +442,21 @@
       <option name="project" value="LOCAL" />
       <updated>1519682302193</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="fix how deck and card .class works">
+      <created>1519682314990</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1519682314990</updated>
+    </task>
+    <task id="LOCAL-00004" summary="update">
+      <created>1519857185790</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1519857185790</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -501,24 +482,24 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299285" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3299285" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3626149" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3299285" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2899878" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24969475" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15079366" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299285" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24969475" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39938712" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24969475" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -536,13 +517,13 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24969475" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24969475" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39938712" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299285" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299285" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -550,11 +531,11 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299285" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.07763024" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299285" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.082417585" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21245421" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299285" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -568,11 +549,12 @@
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
     <MESSAGE value="fix how deck and card .class works" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix how deck and card .class works" />
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="11" />
+      <option name="time" value="13" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -581,26 +563,10 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/view/View.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="21" column="83" lean-forward="false" selection-start-line="21" selection-start-column="83" selection-end-line="21" selection-end-column="83" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Control/JSONControl.java" />
     <entry file="file://$PROJECT_DIR$/src/model/Card.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="4" column="6" lean-forward="false" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
-          <folding>
-            <element signature="method#Card#0;class#Card#0" expanded="false" />
-            <element signature="method#toStringArray#0;class#Card#0" expanded="false" />
-            <element signature="e#2936#2937#0" expanded="false" />
-            <element signature="e#2984#2985#0" expanded="false" />
-            <element signature="method#toString#0;class#Card#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -608,29 +574,18 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="9" column="6" lean-forward="false" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
-          <folding>
-            <element signature="method#Deck#0;class#Deck#0" expanded="false" />
-            <element signature="e#701#702#0" expanded="true" />
-            <element signature="e#743#744#0" expanded="true" />
-            <element signature="method#changeNumberOf#0;class#Deck#0" expanded="false" />
-            <element signature="e#981#982#0" expanded="true" />
-            <element signature="e#1008#1009#0" expanded="true" />
-            <element signature="e#1056#1057#0" expanded="true" />
-            <element signature="e#1087#1088#0" expanded="true" />
-            <element signature="method#toString#0;class#Deck#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/view/fxml/home.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="9" column="189" lean-forward="false" selection-start-line="9" selection-start-column="189" selection-end-line="9" selection-end-column="189" />
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/View/fxml/cell/deckListViewCell.fxml" />
@@ -648,25 +603,38 @@
           <caret line="78" column="56" lean-forward="false" selection-start-line="78" selection-start-column="56" selection-end-line="78" selection-end-column="56" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#HomeView#0;class#HomeView#0" expanded="false" />
+            <element signature="method#show#0;class#HomeView#0" expanded="false" />
+            <element signature="method#setCurrentDeck#0;class#HomeView#0" expanded="false" />
             <element signature="method#setUpDeckManagePane#0;class#HomeView#0" expanded="false" />
+            <element signature="method#updateDeckCardInfo#0;class#HomeView#0" expanded="false" />
+            <element signature="method#clearDeckPane#0;class#HomeView#0" expanded="false" />
             <element signature="class#LVCGeneric#0;class#HomeView#0" expanded="false" />
             <element signature="method#updateItem#0;class#LVCGeneric#0;class#HomeView#0" expanded="false" />
-            <element signature="method#updateDeckCardList#0;class#HomeView#0" expanded="false" />
-            <element signature="method#updateDeckCardInfo#0;class#HomeView#0" expanded="false" />
-            <element signature="method#findCard#0;class#HomeView#0" expanded="false" />
-            <element signature="method#addPlain#0;class#HomeView#0" expanded="false" />
-            <element signature="method#addIsland#0;class#HomeView#0" expanded="false" />
-            <element signature="method#addSwamp#0;class#HomeView#0" expanded="false" />
-            <element signature="method#addMountain#0;class#HomeView#0" expanded="false" />
-            <element signature="method#addForest#0;class#HomeView#0" expanded="false" />
             <element signature="method#changeNumberOfCards#0;class#HomeView#0" expanded="false" />
-            <element signature="e#5619#5620#0" expanded="true" />
-            <element signature="e#5646#5647#0" expanded="true" />
+            <element signature="method#clearInfoPane#0;class#HomeView#0" expanded="false" />
+            <element signature="method#setUpSearchPane#0;class#HomeView#0" expanded="false" />
+            <element signature="method#findCard#0;class#HomeView#0" expanded="false" />
+            <element signature="e#6621#6622#0" expanded="true" />
+            <element signature="e#6681#6682#0" expanded="true" />
+            <element signature="class#LVCAdding#0;class#HomeView#0" expanded="false" />
+            <element signature="method#updateItem#0;class#LVCAdding#0;class#HomeView#0" expanded="false" />
+            <element signature="e#8055#8368#0" expanded="false" />
+            <element signature="e#8411#8724#0" expanded="false" />
+            <element signature="e#8773#8849#0" expanded="false" />
+            <element signature="e#9520#9521#0" expanded="true" />
+            <element signature="e#9557#9558#0" expanded="true" />
+            <element signature="method#updateOpenMenu#0;class#HomeView#0" expanded="false" />
+            <element signature="method#newDeck#0;class#HomeView#0" expanded="false" />
+            <element signature="method#saveDeck#0;class#HomeView#0" expanded="false" />
+            <element signature="e#10587#10588#0" expanded="true" />
+            <element signature="e#10645#10646#0" expanded="true" />
+            <element signature="e#10691#10692#0" expanded="true" />
+            <element signature="e#10718#10719#0" expanded="true" />
             <element signature="method#showSearchPane#0;class#HomeView#0" expanded="false" />
             <element signature="method#showReviewPane#0;class#HomeView#0" expanded="false" />
             <element signature="method#showStatsPane#0;class#HomeView#0" expanded="false" />
             <element signature="method#showOddsPane#0;class#HomeView#0" expanded="false" />
+            <element signature="method#clear#0;class#HomeView#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -675,13 +643,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="method#Card#0;class#Card#0" expanded="false" />
-            <element signature="method#toStringArray#0;class#Card#0" expanded="false" />
-            <element signature="e#2936#2937#0" expanded="false" />
-            <element signature="e#2984#2985#0" expanded="false" />
-            <element signature="method#toString#0;class#Card#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -691,25 +652,38 @@
           <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#HomeView#0;class#HomeView#0" expanded="false" />
+            <element signature="method#show#0;class#HomeView#0" expanded="false" />
+            <element signature="method#setCurrentDeck#0;class#HomeView#0" expanded="false" />
             <element signature="method#setUpDeckManagePane#0;class#HomeView#0" expanded="false" />
+            <element signature="method#updateDeckCardInfo#0;class#HomeView#0" expanded="false" />
+            <element signature="method#clearDeckPane#0;class#HomeView#0" expanded="false" />
             <element signature="class#LVCGeneric#0;class#HomeView#0" expanded="false" />
             <element signature="method#updateItem#0;class#LVCGeneric#0;class#HomeView#0" expanded="false" />
-            <element signature="method#updateDeckCardList#0;class#HomeView#0" expanded="false" />
-            <element signature="method#updateDeckCardInfo#0;class#HomeView#0" expanded="false" />
-            <element signature="method#findCard#0;class#HomeView#0" expanded="false" />
-            <element signature="method#addPlain#0;class#HomeView#0" expanded="false" />
-            <element signature="method#addIsland#0;class#HomeView#0" expanded="false" />
-            <element signature="method#addSwamp#0;class#HomeView#0" expanded="false" />
-            <element signature="method#addMountain#0;class#HomeView#0" expanded="false" />
-            <element signature="method#addForest#0;class#HomeView#0" expanded="false" />
             <element signature="method#changeNumberOfCards#0;class#HomeView#0" expanded="false" />
-            <element signature="e#5619#5620#0" expanded="true" />
-            <element signature="e#5646#5647#0" expanded="true" />
+            <element signature="method#clearInfoPane#0;class#HomeView#0" expanded="false" />
+            <element signature="method#setUpSearchPane#0;class#HomeView#0" expanded="false" />
+            <element signature="method#findCard#0;class#HomeView#0" expanded="false" />
+            <element signature="e#6621#6622#0" expanded="true" />
+            <element signature="e#6681#6682#0" expanded="true" />
+            <element signature="class#LVCAdding#0;class#HomeView#0" expanded="false" />
+            <element signature="method#updateItem#0;class#LVCAdding#0;class#HomeView#0" expanded="false" />
+            <element signature="e#8055#8368#0" expanded="false" />
+            <element signature="e#8411#8724#0" expanded="false" />
+            <element signature="e#8773#8849#0" expanded="false" />
+            <element signature="e#9520#9521#0" expanded="true" />
+            <element signature="e#9557#9558#0" expanded="true" />
+            <element signature="method#updateOpenMenu#0;class#HomeView#0" expanded="false" />
+            <element signature="method#newDeck#0;class#HomeView#0" expanded="false" />
+            <element signature="method#saveDeck#0;class#HomeView#0" expanded="false" />
+            <element signature="e#10587#10588#0" expanded="true" />
+            <element signature="e#10645#10646#0" expanded="true" />
+            <element signature="e#10691#10692#0" expanded="true" />
+            <element signature="e#10718#10719#0" expanded="true" />
             <element signature="method#showSearchPane#0;class#HomeView#0" expanded="false" />
             <element signature="method#showReviewPane#0;class#HomeView#0" expanded="false" />
             <element signature="method#showStatsPane#0;class#HomeView#0" expanded="false" />
             <element signature="method#showOddsPane#0;class#HomeView#0" expanded="false" />
+            <element signature="method#clear#0;class#HomeView#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -721,6 +695,7 @@
           <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
           <folding>
             <element signature="docComment;method#setUp#0;class#Control#0" expanded="false" />
+            <element signature="method#findCardsByName#0;class#Control#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -733,6 +708,7 @@
           <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
           <folding>
             <element signature="docComment;method#setUp#0;class#Control#0" expanded="false" />
+            <element signature="method#findCardsByName#0;class#Control#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -743,7 +719,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="56" column="11" lean-forward="false" selection-start-line="56" selection-start-column="11" selection-end-line="56" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -766,172 +741,214 @@
     <entry file="file://$PROJECT_DIR$/src/Model/Card/Land.java" />
     <entry file="file://$PROJECT_DIR$/src/Control/DeckControl.java" />
     <entry file="file://$PROJECT_DIR$/src/Control/CardControl.java" />
-    <entry file="file://$PROJECT_DIR$/src/view/fxml/start.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="166" lean-forward="true" selection-start-line="7" selection-start-column="166" selection-end-line="7" selection-end-column="173" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/view/fxml/cell/listViewCell-name-odd.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="130" lean-forward="false" selection-start-line="5" selection-start-column="130" selection-end-line="5" selection-end-column="130" />
-          <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/fxml/cell/listViewCell-name-nbr-s-m.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
       </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="130" lean-forward="false" selection-start-line="7" selection-start-column="130" selection-end-line="7" selection-end-column="130" />
-          <folding />
-        </state>
-      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/View.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="26" column="84" lean-forward="false" selection-start-line="26" selection-start-column="84" selection-end-line="26" selection-end-column="84" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/Check.java" />
     <entry file="file://$PROJECT_DIR$/src/view/fxml/cell/listViewCell-name-nbr-rm.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" column="11" lean-forward="false" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
           <folding />
         </state>
       </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/view/StartView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="47">
-          <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+        <state relative-caret-position="203">
+          <caret line="42" column="0" lean-forward="true" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
           <folding>
             <element signature="method#show#0;class#StartView#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/control/Control.java">
+    <entry file="file://$PROJECT_DIR$/src/view/fxml/cell/listViewCell-name-nbr-s-m.fxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
-          <folding>
-            <element signature="docComment;method#setUp#0;class#Control#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="135">
+          <caret line="9" column="128" lean-forward="false" selection-start-line="9" selection-start-column="128" selection-end-line="9" selection-end-column="128" />
+          <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Model.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="376">
-          <caret line="81" column="64" lean-forward="false" selection-start-line="81" selection-start-column="64" selection-end-line="81" selection-end-column="64" />
-          <folding>
-            <element signature="method#Model#0;class#Model#0" expanded="false" />
-            <element signature="docComment;method#checkDecks#0;class#Model#0" expanded="false" />
-            <element signature="method#checkDecks#0;class#Model#0" expanded="false" />
-            <element signature="method#getLocalDeckNames#0;class#Model#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Card.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2">
-          <caret line="24" column="32" lean-forward="false" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="32" />
-          <folding>
-            <element signature="method#Card#0;class#Card#0" expanded="false" />
-            <element signature="method#toStringArray#0;class#Card#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/fxml/home.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/fxml/new_deck.fxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="331">
-          <caret line="79" column="135" lean-forward="false" selection-start-line="79" selection-start-column="135" selection-end-line="79" selection-end-column="135" />
+        <state relative-caret-position="120">
+          <caret line="8" column="167" lean-forward="true" selection-start-line="8" selection-start-column="167" selection-end-line="8" selection-end-column="174" />
           <folding />
         </state>
       </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/Check.java">
+    <entry file="file://$PROJECT_DIR$/src/view/View.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="27" lean-forward="false" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="27" />
-          <folding />
+        <state relative-caret-position="385">
+          <caret line="34" column="93" lean-forward="false" selection-start-line="34" selection-start-column="93" selection-end-line="34" selection-end-column="93" />
+          <folding>
+            <element signature="method#showYESorNO#0;class#View#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/Err.java">
+    <entry file="file://$PROJECT_DIR$/src/view/NewDeck.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="40" column="20" lean-forward="false" selection-start-line="40" selection-start-column="20" selection-end-line="40" selection-end-column="20" />
+        <state relative-caret-position="506">
+          <caret line="56" column="36" lean-forward="false" selection-start-line="56" selection-start-column="36" selection-end-line="56" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#471#472#0" expanded="true" />
+            <element signature="e#506#507#0" expanded="true" />
+            <element signature="method#hide#0;class#NewDeck#0" expanded="false" />
+            <element signature="method#start#0;class#NewDeck#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/utils/Err.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="14" column="41" lean-forward="false" selection-start-line="14" selection-start-column="41" selection-end-line="14" selection-end-column="41" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/model/Deck.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="32" column="59" lean-forward="false" selection-start-line="32" selection-start-column="59" selection-end-line="32" selection-end-column="59" />
+        <state relative-caret-position="510">
+          <caret line="51" column="4" lean-forward="false" selection-start-line="51" selection-start-column="4" selection-end-line="51" selection-end-column="4" />
           <folding>
             <element signature="method#Deck#0;class#Deck#0" expanded="false" />
-            <element signature="e#701#702#0" expanded="true" />
-            <element signature="e#743#744#0" expanded="true" />
+            <element signature="method#addCard#0;class#Deck#0" expanded="false" />
             <element signature="method#changeNumberOf#0;class#Deck#0" expanded="false" />
-            <element signature="e#981#982#0" expanded="true" />
-            <element signature="e#1008#1009#0" expanded="true" />
-            <element signature="e#1056#1057#0" expanded="true" />
-            <element signature="e#1087#1088#0" expanded="true" />
             <element signature="method#toString#0;class#Deck#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/control/Control.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="249">
+          <caret line="62" column="52" lean-forward="false" selection-start-line="62" selection-start-column="52" selection-end-line="62" selection-end-column="52" />
+          <folding>
+            <element signature="method#Control#0;class#Control#0" expanded="false" />
+            <element signature="docComment;method#setUp#0;class#Control#0" expanded="false" />
+            <element signature="method#findCardsByName#0;class#Control#0" expanded="false" />
+            <element signature="method#openDeck#0;class#Control#0" expanded="false" />
+            <element signature="method#createDeck#0;class#Control#0" expanded="false" />
+            <element signature="method#saveDeck#0;class#Control#0" expanded="false" />
+            <element signature="method#deleteDeck#0;class#Control#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/fxml/start.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="166" lean-forward="true" selection-start-line="7" selection-start-column="166" selection-end-line="7" selection-end-column="173" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/fxml/home.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="82" lean-forward="false" selection-start-line="20" selection-start-column="82" selection-end-line="20" selection-end-column="82" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Model.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="337">
+          <caret line="94" column="39" lean-forward="false" selection-start-line="94" selection-start-column="39" selection-end-line="94" selection-end-column="39" />
+          <folding>
+            <element signature="method#Model#0;class#Model#0" expanded="false" />
+            <element signature="docComment;method#findCardByName#0;class#Model#0" expanded="false" />
+            <element signature="method#findCardByName#0;class#Model#0" expanded="false" />
+            <element signature="docComment;method#findCardsByName#0;class#Model#0" expanded="false" />
+            <element signature="method#findCardsByName#0;class#Model#0" expanded="false" />
+            <element signature="docComment;method#checkDecksDir#0;class#Model#0" expanded="false" />
+            <element signature="method#checkDecksDir#0;class#Model#0" expanded="false" />
+            <element signature="method#getLocalDeckNames#0;class#Model#0" expanded="false" />
+            <element signature="method#getDeck#0;class#Model#0" expanded="false" />
+            <element signature="method#createDeck#0;class#Model#0" expanded="false" />
+            <element signature="method#saveDeck#0;class#Model#0" expanded="false" />
+            <element signature="method#deleteDeck#0;class#Model#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Card.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="433">
+          <caret line="85" column="0" lean-forward="true" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
+          <folding>
+            <element signature="method#Card#0;class#Card#0" expanded="false" />
+            <element signature="method#Card#1;class#Card#0" expanded="false" />
+            <element signature="method#toStringArray#0;class#Card#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/view/HomeView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="259">
-          <caret line="182" column="54" lean-forward="false" selection-start-line="182" selection-start-column="54" selection-end-line="182" selection-end-column="54" />
+        <state relative-caret-position="530">
+          <caret line="251" column="7" lean-forward="false" selection-start-line="251" selection-start-column="7" selection-end-line="251" selection-end-column="7" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#HomeView#0;class#HomeView#0" expanded="false" />
+            <element signature="method#show#0;class#HomeView#0" expanded="false" />
+            <element signature="method#setCurrentDeck#0;class#HomeView#0" expanded="false" />
             <element signature="method#setUpDeckManagePane#0;class#HomeView#0" expanded="false" />
+            <element signature="method#updateDeckCardInfo#0;class#HomeView#0" expanded="false" />
+            <element signature="method#clearDeckPane#0;class#HomeView#0" expanded="false" />
             <element signature="class#LVCGeneric#0;class#HomeView#0" expanded="false" />
             <element signature="method#updateItem#0;class#LVCGeneric#0;class#HomeView#0" expanded="false" />
-            <element signature="method#updateDeckCardList#0;class#HomeView#0" expanded="false" />
-            <element signature="method#updateDeckCardInfo#0;class#HomeView#0" expanded="false" />
-            <element signature="method#findCard#0;class#HomeView#0" expanded="false" />
-            <element signature="method#addPlain#0;class#HomeView#0" expanded="false" />
-            <element signature="method#addIsland#0;class#HomeView#0" expanded="false" />
-            <element signature="method#addSwamp#0;class#HomeView#0" expanded="false" />
-            <element signature="method#addMountain#0;class#HomeView#0" expanded="false" />
-            <element signature="method#addForest#0;class#HomeView#0" expanded="false" />
             <element signature="method#changeNumberOfCards#0;class#HomeView#0" expanded="false" />
-            <element signature="e#5619#5620#0" expanded="true" />
-            <element signature="e#5646#5647#0" expanded="true" />
+            <element signature="method#clearInfoPane#0;class#HomeView#0" expanded="false" />
+            <element signature="method#setUpSearchPane#0;class#HomeView#0" expanded="false" />
+            <element signature="method#findCard#0;class#HomeView#0" expanded="false" />
+            <element signature="e#6621#6622#0" expanded="true" />
+            <element signature="e#6681#6682#0" expanded="true" />
+            <element signature="class#LVCAdding#0;class#HomeView#0" expanded="false" />
+            <element signature="method#updateItem#0;class#LVCAdding#0;class#HomeView#0" expanded="false" />
+            <element signature="e#8055#8368#0" expanded="false" />
+            <element signature="e#8411#8724#0" expanded="false" />
+            <element signature="e#8773#8849#0" expanded="false" />
+            <element signature="e#9520#9521#0" expanded="true" />
+            <element signature="e#9557#9558#0" expanded="true" />
+            <element signature="method#updateOpenMenu#0;class#HomeView#0" expanded="false" />
+            <element signature="method#newDeck#0;class#HomeView#0" expanded="false" />
+            <element signature="method#saveDeck#0;class#HomeView#0" expanded="false" />
+            <element signature="e#10587#10588#0" expanded="true" />
+            <element signature="e#10645#10646#0" expanded="true" />
+            <element signature="e#10691#10692#0" expanded="true" />
+            <element signature="e#10718#10719#0" expanded="true" />
             <element signature="method#showSearchPane#0;class#HomeView#0" expanded="false" />
             <element signature="method#showReviewPane#0;class#HomeView#0" expanded="false" />
             <element signature="method#showStatsPane#0;class#HomeView#0" expanded="false" />
             <element signature="method#showOddsPane#0;class#HomeView#0" expanded="false" />
+            <element signature="method#clear#0;class#HomeView#0" expanded="false" />
           </folding>
         </state>
       </provider>

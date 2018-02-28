@@ -6,18 +6,19 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 import java.util.Set;
 
 public class Model {
 
     public final static String DECK_FOLDER = "decks";
+    public final static String FILE_PREFIX = "420_";
     private final static int CARD_RECORD_SIZE = 3;
-    private final static String SEPARATOR = ";";
+    private final static String SEPARATOR = "~";
 
     private static JSONObject CARD_DB;
 
@@ -27,12 +28,62 @@ public class Model {
     }
 
 
+
+    //CARD MANAGE
+
+    /**
+     *
+     *
+     * Questo metodo serve nel caricamento di un deck pre-esistente
+     * Trova la carta nel DB col nome @param e restituisce un oggetto di tipo Card
+     *
+     * @param card_name
+     * @return
+     */
+    private Card findCardByName(String card_name){
+
+        Set e = CARD_DB.keySet();
+        Object[] keys = e.toArray();
+
+        for(int i = 0; i < keys.length; i++)
+            if(keys[i].toString().matches(card_name))
+                return new Card((JSONObject) CARD_DB.get(keys[i]));
+
+        System.out.println("No match for the card: "+card_name);
+
+        return null;
+    }
+
+    /**
+     *
+     * Questo metodo restituisce una lista di carte il cui nome che metcha con il parametro dato
+     *
+     * @param card_name
+     * @return
+     */
+    public ArrayList<Card> findCardsByName(String card_name){
+
+        ArrayList<Card> cardL = new ArrayList<>();
+
+        Set e = CARD_DB.keySet();
+        Object[] keys = e.toArray();
+
+        for(int i = 0; i < keys.length; i++)
+            if(keys[i].toString().toUpperCase().contains(card_name.toUpperCase()))
+                cardL.add(new Card((JSONObject) CARD_DB.get(keys[i])));
+
+        return cardL;
+    }
+
+
+    //DECK MANAGE
+
     /**
      *
      * Se non è già presente la cartella "decks" questo metodo la crea.
      *
      */
-    public void checkDecks() {
+    public void checkDecksDir() {
         final File dir = new File(DECK_FOLDER);
 
         if( !dir.exists() ) { //nota: exists() -> non distingue le lettere maiuscole dalle minuscole
@@ -41,19 +92,24 @@ public class Model {
         }
     }
 
-
     public String[] getLocalDeckNames(){
         File dir = new File("./"+DECK_FOLDER);
-        File[] files = dir.listFiles();
+        File[] files = dir.listFiles(new FilenameFilter() {
+            @Override
+            public boolean accept(File dir, String name) {
+                return name.startsWith(FILE_PREFIX);
+            }
+        });
+        if(files == null) return null;;
         String[] res = new String[files.length];
-        for ( int i = 0; i < files.length; i++) if( files[i].isFile() ) res[i] = files[i].getName();
+        for ( int i = 0; i < files.length; i++) if( files[i].isFile() ) res[i] = files[i].getName().substring(4);
+        Arrays.sort(res);
         return res;
     }
 
-
     public Deck getDeck(String deckName) throws FileNotFoundException {
 
-        String filePath = "./"+DECK_FOLDER+"/"+deckName;
+        String filePath = "./"+DECK_FOLDER+"/"+FILE_PREFIX+deckName;
         File dk = new File(filePath);
         Scanner sc = new Scanner(dk);
         StringBuilder s = new StringBuilder();
@@ -62,52 +118,83 @@ public class Model {
 
         Deck deck = new Deck(par[0], par[1]);
 
-        //3 is card name
-        //4 card number
-        //5 side or main ecc.
+        //2 is card name
+        //3 card number
+        //4 side or main ecc.
 
-        for(int i = 2; i < par.length; i=i+CARD_RECORD_SIZE) deck.addCard(new Object[]{ this.findCardsByName(par[i+0]), par[i+1], par[i+2] });
+        for(int i = 2; i < par.length; i=i+CARD_RECORD_SIZE) deck.addCard(new Object[]{ this.findCardByName(par[i+0]), par[i+1], par[i+2] });
 
         return deck;
 
     }
 
-    private Card findCardsByName(String card_name){
+    public int createDeck(String name, String info){
 
-        Set e = CARD_DB.keySet();
-        Object[] keys = e.toArray();
+        String path = "./"+DECK_FOLDER+"/"+FILE_PREFIX+name;
 
-        for(int i = 0; i < keys.length; i++) if(keys[i].toString().matches(card_name)) return new Card((JSONObject) CARD_DB.get(keys[i]));
+        File deck = new File(path);
 
-        System.out.println("No match for the card: "+card_name);
+        try {
 
-        return null;
+            if(!deck.createNewFile()) return 1; //file already exist
+
+        } catch (IOException e) {
+
+            e.printStackTrace();
+            return 2; // io exception
+
+        }
+
+        try {
+
+            FileWriter w = new FileWriter(deck);
+            w.write(name+SEPARATOR+info+SEPARATOR);
+            w.close();
+
+        } catch (IOException e) {
+
+            e.printStackTrace();
+
+            deck.deleteOnExit();
+
+            return 3; // io exception after creating file
+        }
+
+        return 4;
+    }
+
+    public int saveDeck(Deck deck){
+
+        String path = "./"+DECK_FOLDER+"/"+FILE_PREFIX+deck.getName();
+
+        File f = new File(path);
+
+        StringBuilder s = new StringBuilder(deck.getName() + SEPARATOR + deck.getInfo() + SEPARATOR);
+
+        for ( Object[] o : deck.getCardList() )
+            s.append(((Card) o[0]).get0()).append(SEPARATOR).append(o[1].toString()).append(SEPARATOR).append(o[2].toString()).append(SEPARATOR);
+
+        try {
+
+            FileWriter w = new FileWriter(f);
+            w.write(s.toString());
+            w.close();
+
+        } catch (IOException e) {
+
+            e.printStackTrace();
+            return 0;
+        }
+
+        return 1;
 
     }
 
-            /* //esempio di estrazione di stringhe s
+    public boolean deleteDeck(String name){
+        String path = "./"+DECK_FOLDER+"/"+FILE_PREFIX+name;
 
-            Object o = new JSONParser().parse(new FileReader("db.json"));
-            JSONObject oj = (JSONObject) o;
-            //JSONArray cards = new JSONArray();
+        File deck = new File(path);
 
-            //oj.keySet(); print all cards name
-
-            Set e = oj.keySet();
-            Object[] keys = e.toArray();
-
-
-            String heType = "Vaul";
-            ArrayList<String> possResult = new ArrayList<>();
-
-            for( int i = 0; i < keys.length; i++ )
-            {
-                if( keys[i].toString().regionMatches(true, 0, heType, 0, 3) ) possResult.add(keys[i].toString()) ;
-            }
-
-            System.out.println(possResult.toString());
-
-
-    */
-
+        return deck.delete();
+    }
 }

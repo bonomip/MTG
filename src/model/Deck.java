@@ -21,19 +21,6 @@ public class Deck {
     }
 
 
-    public void addCard(Object[] card){
-        if(card[0] == null) return;
-        this.cardList.add(card);
-    }
-
-    public void remove(Object[] card){
-        this.cardList.remove(card);
-    }
-
-    public void changeNumberOf(Object[] card, int newValue){
-        if(newValue == 0) { this.cardList.remove(card); return; }
-        card[1] = newValue;
-    }
 
     public String getName(){ return name; }
 
@@ -44,6 +31,24 @@ public class Deck {
     public ArrayList<Object[]> getCardList() {
         return cardList;
     }
+
+
+
+    public void addCard(Object[] card){
+        if(card[0] == null) return;
+        this.cardList.add(card);
+    }
+
+    public void removeCard(Object[] card){
+        this.cardList.remove(card);
+    }
+
+    public void changeNumberOf(Object[] card, int newValue){
+        if(newValue == 0) { this.cardList.remove(card); return; }
+        card[1] = newValue;
+    }
+
+
 
     public String toString(){
 

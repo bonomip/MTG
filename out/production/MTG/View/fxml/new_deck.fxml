@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="360.0" prefWidth="240.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TextField id="name" style="-fx-prompt-text-fill: derive(-fx-control-inner-background, -30%)" fx:id="name" layoutX="20.0" layoutY="31.0" prefHeight="27.0" prefWidth="200.0" promptText="deck name" />
+      <TextArea id="info" style="-fx-prompt-text-fill: derive(-fx-control-inner-background, -30%)" fx:id="info" layoutX="20.0" layoutY="82.0" prefHeight="200.0" prefWidth="200.0" promptText="additional info" />
+      <Button layoutX="20.0" layoutY="304.0" mnemonicParsing="false" onAction="#create" prefHeight="27.0" prefWidth="200.0" text="Create" />
+   </children>
+</AnchorPane>

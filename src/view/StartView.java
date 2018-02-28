@@ -41,11 +41,10 @@ public class StartView extends View {
         super.stage.setResizable(false);
         super.stage.show();
 
-        this.ctrl = new Control();
-
         Task<Void> task = new Task<Void>() {
             @Override
             protected Void call() throws Exception {
+                ctrl = new Control();
                 ctrl.setUp();
                 return null;
             }
