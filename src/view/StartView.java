@@ -20,7 +20,7 @@ public class StartView extends View {
 
     @Override
     public void show() throws IOException {
-
+        launch(null);
     }
 
     @Override
@@ -68,7 +68,4 @@ public class StartView extends View {
         new Thread(task).start();
     }
 
-    public static void main(String[] args){
-        launch(args);
-    }
 }

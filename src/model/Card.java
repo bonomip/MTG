@@ -2,17 +2,36 @@ package model;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import java.util.Arrays;
+
+import static model.Card.Color.*;
 
 public class Card {
 
     private static int FIELDSIZE = 12;
 
-    public final static String PLAINS = "1";
-    public final static String ISLAND = "2";
-    public final static String SWAMP = "3";
-    public final static String MOUNTAIN = "4";
-    public final static String FOREST = "5";
+    public class Color {
+        public final static String PLAINS = "1";
+        public final static String ISLAND = "2";
+        public final static String SWAMP = "3";
+        public final static String MOUNTAIN = "4";
+        public final static String FOREST = "5";
+    }
+
+    public class Type {
+        public final static String ARTIFACT = "Artifact";
+        public final static String CREATURE = "Creature";
+        public final static String ENCHANTMENT = "Enchantment";
+        public final static String INSTANT = "Instant";
+        public final static String LAND = "Land";
+        public final static String PLANESWALKER = "Planeswalker";
+        public final static String SORCERY = "Sorcery";
+
+        public final static String ARTIFACT_LAND = "Artifact Land";
+        public final static String ARTIFACT_CREATURE = "Artifact Creature";
+        public final static String ENCHANTMENT_ARTIFACT = "Enchantment Artifact";
+        public final static String ENCHANTMENT_CREATURE = "Enchantment Creature";
+        public final static String LAND_CREATURE = "Land Creature";
+    }
 
     private Object[] fields;    // 0 : name
                                 // 1 : manaCost
@@ -27,6 +46,8 @@ public class Card {
                                 //10 : toughness
                                 //11 : loyalty
     public boolean[] flag;
+
+
 
     public Card(JSONObject card){
 
@@ -165,43 +186,80 @@ public class Card {
 
     }
 
+
+
+    public String getName(){
+        return this.fields[0].toString();
+    }
+
+    public String getManaCost() {
+        return this.flag[1] ? this.fields[1].toString() : ""; }
+
+    public double getConvertedManaCost() { return Double.parseDouble(this.fields[2].toString()); }
+
+    public String[] getColors() { return toStringArray(this.fields[3]); }
+
+    public String[] get4() { return toStringArray(this.fields[4]); }
+
+    public String[] getTypes() { return toStringArray(this.fields[5]); }
+
+    public String[] get6() { return toStringArray(this.fields[6]); }
+
+    public String getFullType() { return this.fields[7].toString(); }
+
+    public String getText() { return this.flag[8] ? this.fields[8].toString() : ""; }
+
+    public String getPower() { return this.flag[9] ? this.fields[9].toString() : ""; }
+
+    public String getToughness() { return this.flag[10] ? this.fields[10].toString() : ""; }
+
+    public String getLoyalty() { return this.flag[11] ? this.fields[11].toString() : ""; }
+
+    public String getPowerOrLoyalty(){
+        return this.getPower().length() == 0 ? this.getLoyalty() : this.getPower()+"/"+this.getToughness();
+    }
+
     private String[] toStringArray(Object o){
         JSONArray a = (JSONArray) o;
+        if(a == null) return new String[]{"C"};
         String[] r = new String[a.size()];
         for (int i = 0; i < r.length; i++) r[i] = a.get(i).toString();
         return r;
     }
 
-    public String get0(){
-        return this.fields[0].toString();
+    /**
+     *
+     * returns true if the card has AT LEAST the given type
+     *
+     * USE ONLY BASIC TYPES
+     *
+     */
+    public boolean is(String type){
+        for( String s : this.getTypes() )
+            if(s.equals(type)) return true;
+        return false;
     }
 
-    public String get1() { return this.fields[1].toString(); }
+    /**
+     *
+     * return true if the card is ONLY of the given type
+     *
+     * USE ONLY BASIC TYPES
+     *
+     */
+    public boolean isOnly(String type) {
+        return this.getTypes().length == 1 && this.getTypes()[0].equals(type);
+    }
 
-    public double get2() { return Double.parseDouble(this.fields[2].toString()); }
 
-    public String[] get3() { return toStringArray(this.fields[3]); }
-
-    public String[] get4() { return toStringArray(this.fields[4]); }
-
-    public String[] get5() { return toStringArray(this.fields[5]); }
-
-    public String[] get6() { return toStringArray(this.fields[6]); }
-
-    public String get7() { return this.fields[7].toString(); }
-
-    public String get8() { return this.fields[8].toString(); }
-
-    public String get9() { return this.fields[9].toString(); }
-
-    public String get10() { return this.fields[10].toString(); }
-
-    public int get11() { return Integer.parseInt(this.fields[11].toString()); }
 
     @Override
     public String toString() {
-        String a = "";
-        for ( int i = 0; i < this.flag.length; i++ ) a += this.flag[i] ? this.fields[i].toString()+" " : "";
-        return a;
+            StringBuilder s = new StringBuilder();
+            s.append(this.getName()).append("\t").append(this.getManaCost()).append("\n\n");
+            s.append(this.getFullType()).append("\n\n");
+            s.append("\t").append(this.getText()).append("\n\n");
+            s.append("\t\t\t").append(this.getPower().length() == 0 ? "" : (this.getPower()+"/"+this.getToughness()) ).append(this.getLoyalty());
+            return s.toString();
     }
 }

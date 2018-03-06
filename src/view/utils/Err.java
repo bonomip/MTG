@@ -1,6 +1,8 @@
 package view.utils;
 
 import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
+import javafx.scene.text.Font;
 
 public class Err {
 
@@ -12,6 +14,7 @@ public class Err {
     public static final int MUST_LOAD_CARD_FIRST = 5;
     public static final int INPUT_MUST_BE_INTEGER = 6;
     public static final int DECK_ALREADY_EXIST = 7;
+    public static final int DECK_MUST_HAVE_NAME = 8;
     public static final int UNKNOWN = 99;
 
     public static void show(int kind){
@@ -43,6 +46,9 @@ public class Err {
             case DECK_ALREADY_EXIST:
                 text = "Mazzo già esistente!";
                 break;
+            case DECK_MUST_HAVE_NAME:
+                text = "Un deck necessità di un nome e di una descrizione!";
+                break;
             default:
                 text = "?!";
 
@@ -61,6 +67,4 @@ public class Err {
         for(int i = 0; i < s.length(); i++) if( !Character.isDigit(s.charAt(i)) ) return false;
         return true;
     }
-
-
 }

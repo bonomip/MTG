@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="MTG:jar">
+    <output-path>$PROJECT_DIR$/</output-path>
+    <root id="archive" name="MTG.jar">
+      <element id="module-output" name="MTG" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/json-simple-1.1.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

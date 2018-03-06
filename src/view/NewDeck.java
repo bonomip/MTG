@@ -53,6 +53,7 @@ public class NewDeck extends View {
     }
 
     public void create(ActionEvent event){
+            System.out.print(this.name.getText());
             if(!this.ctrl.createDeck(this.name.getText(), this.info.getText(), this))
                 Err.show(Err.UNKNOWN);
     }

@@ -4,10 +4,9 @@
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="220.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ProgressBar layoutX="11.0" layoutY="24.0" prefWidth="200.0" progress="0.0" fx:id="progressBar" />
-      <Label layoutX="105.0" layoutY="3.0" text=". . ." />
+      <ProgressBar fx:id="progressBar" layoutX="11.0" layoutY="24.0" prefWidth="200.0" progress="0.0" />
+      <Label layoutX="79.0" layoutY="3.0" text="Loading ..." />
    </children>
 </AnchorPane>

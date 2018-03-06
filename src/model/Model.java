@@ -1,17 +1,11 @@
 package model;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import java.io.*;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Scanner;
-import java.util.Set;
+import java.util.*;
 
 public class Model {
 
@@ -109,7 +103,9 @@ public class Model {
 
     public Deck getDeck(String deckName) throws FileNotFoundException {
 
-        String filePath = "./"+DECK_FOLDER+"/"+FILE_PREFIX+deckName;
+        String t = this.removeSeparator(deckName);
+
+        String filePath = "./"+DECK_FOLDER+"/"+FILE_PREFIX+t;
         File dk = new File(filePath);
         Scanner sc = new Scanner(dk);
         StringBuilder s = new StringBuilder();
@@ -130,7 +126,11 @@ public class Model {
 
     public int createDeck(String name, String info){
 
-        String path = "./"+DECK_FOLDER+"/"+FILE_PREFIX+name;
+        if(name.equals("") || info.equals("")) return 0;
+
+        String s = removeSeparator(name);
+
+        String path = "./"+DECK_FOLDER+"/"+FILE_PREFIX+s;
 
         File deck = new File(path);
 
@@ -145,10 +145,14 @@ public class Model {
 
         }
 
+        String t = removeSeparator(info);
+
+        String toWrite = s+SEPARATOR+t+SEPARATOR;
+
         try {
 
             FileWriter w = new FileWriter(deck);
-            w.write(name+SEPARATOR+info+SEPARATOR);
+            w.write(toWrite);
             w.close();
 
         } catch (IOException e) {
@@ -163,21 +167,34 @@ public class Model {
         return 4;
     }
 
+    private String removeSeparator(String s){
+        StringBuilder r = new StringBuilder();
+        r.append("");
+        for(int i = 0; i < s.length(); i++)
+            if (s.charAt(i) != "~".charAt(0)) r.append(s.charAt(i));
+            else r.append("-");
+
+        return r.toString();
+    }
+
     public int saveDeck(Deck deck){
 
         String path = "./"+DECK_FOLDER+"/"+FILE_PREFIX+deck.getName();
 
         File f = new File(path);
 
-        StringBuilder s = new StringBuilder(deck.getName() + SEPARATOR + deck.getInfo() + SEPARATOR);
+        String s = this.removeSeparator(deck.getName());
+        String t = this.removeSeparator(deck.getInfo());
+
+        StringBuilder r = new StringBuilder(s+SEPARATOR+t+SEPARATOR);
 
         for ( Object[] o : deck.getCardList() )
-            s.append(((Card) o[0]).get0()).append(SEPARATOR).append(o[1].toString()).append(SEPARATOR).append(o[2].toString()).append(SEPARATOR);
+            r.append(((Card) o[0]).getName()).append(SEPARATOR).append(o[1].toString()).append(SEPARATOR).append(o[2].toString()).append(SEPARATOR);
 
         try {
 
             FileWriter w = new FileWriter(f);
-            w.write(s.toString());
+            w.write(r.toString());
             w.close();
 
         } catch (IOException e) {

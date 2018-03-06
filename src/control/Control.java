@@ -57,10 +57,12 @@ public class Control {
     }
 
 
-
     //CARD SEARCH
 
     public boolean findCardsByName(String card_name){
+
+        if(card_name.length() == 0) return true;
+
         ArrayList<Card> cardL;
 
         cardL = this.model.findCardsByName(card_name);
@@ -68,14 +70,13 @@ public class Control {
         if(cardL == null) return false;
         if(cardL.size() == 0) return false;
 
-        cardL.sort(Comparator.comparing(Card::get0));
+        cardL.sort(Comparator.comparing(Card::getName));
 
-        this.home.updateSearchLV(cardL);
+        this.home.updateSearchList(cardL);
 
         return true;
 
     }
-
 
 
     //DECK MANAGE
@@ -97,13 +98,16 @@ public class Control {
         if( deck == null ) return false;
 
         this.home.setCurrentDeck(deck);
-        this.home.updateDeckCardList();
+        this.home.updateDeckList();
 
         return true;
     }
 
     public boolean createDeck(String name, String info, NewDeck popUp) {
         switch (this.model.createDeck(name, info)) {
+            case 0:
+                Err.show(Err.DECK_MUST_HAVE_NAME);
+                return true;
             case 1:
                 Err.show(Err.DECK_ALREADY_EXIST);
                 return true;
@@ -148,5 +152,28 @@ public class Control {
                 this.home.clear();
             }
             else Err.show(Err.UNKNOWN);
+    }
+
+    public void removeCard(Object[] card, Deck deck){
+        if(deck == null) return;
+        deck.removeCard(card);
+        this.home.clearCardInfo();
+        this.home.updateDeckList();
+    }
+
+    public void switchCard(Object[] card, Deck deck){
+        deck.switchCard(card);
+        this.home.updateDeckList();
+    }
+
+    public void addCard(Object[] card, Deck deck){
+        if(deck == null) return;
+        deck.addCard(card);
+        this.home.updateDeckList();
+    }
+
+    public void changeNumberOf(Object[] card, int value, Deck deck){
+        deck.changeNumberOf(card, value);
+        this.home.updateDeckList();
     }
 }
