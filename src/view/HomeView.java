@@ -140,7 +140,6 @@ public class HomeView extends View{
             this.mainL = FXCollections.observableArrayList();
             mdLV.setItems(this.mainL);
             mdLV.setCellFactory(param -> new LVCGeneric());
-            this.mdLV.set
 
             this.sideL = FXCollections.observableArrayList();
             sdLV.setItems(this.sideL);
