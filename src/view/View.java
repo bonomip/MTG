@@ -1,6 +1,8 @@
 package view;
 
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
@@ -12,6 +14,9 @@ public abstract class View extends Application{
 
     public Stage stage;
     public int width, height;
+
+    public static final ObservableList<String> cmcParams = FXCollections.observableArrayList(
+            "<", "<=","=", ">=", ">");
 
     public View(){}
 

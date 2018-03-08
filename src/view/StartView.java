@@ -51,15 +51,12 @@ public class StartView extends View {
         };
 
         task.setOnSucceeded(event -> {
-            try{
-
-                this.hide();
-
+            try {
                 new HomeView(ctrl).show();
-
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            this.hide();
         });
 
         progressBar.setProgress(-1);

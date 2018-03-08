@@ -11,14 +11,16 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ProgressIndicator?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 
-<VBox prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="749.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
   <children>
 
 
@@ -37,6 +39,7 @@
         </Menu>
         <Menu fx:id="editMenu" disable="true" mnemonicParsing="false" text="Edit">
           <items>
+              <MenuItem mnemonicParsing="false" onAction="#massEntry" text="Mass entry" />
             <MenuItem mnemonicParsing="false" onAction="#saveDeck" text="Save" />
                 <SeparatorMenuItem mnemonicParsing="false" />
             <MenuItem mnemonicParsing="false" onAction="#deleteDeck" text="Delete" />
@@ -52,7 +55,9 @@
         </Menu>
           <Menu mnemonicParsing="false" text="Help">
             <items>
-                <MenuItem mnemonicParsing="false" text="About MTG..." />
+                <MenuItem fx:id="infoSearch" mnemonicParsing="false" text="How to search..." />
+                <SeparatorMenuItem mnemonicParsing="false" />
+                <MenuItem fx:id="aboutApp" mnemonicParsing="false" text="About MTG..." />
             </items>
           </Menu>
 
@@ -73,38 +78,45 @@
 
 
 
-            <AnchorPane id="mgmtPane" fx:id="mgmt" layoutY="70.0" prefHeight="500.0" prefWidth="800.0" visible="true">
+            <AnchorPane id="mgmtPane" fx:id="mgmt" layoutY="70.0" prefHeight="650.0" prefWidth="800.0" visible="true">
                <children>
                   <AnchorPane id="deckPane" layoutX="10.0" layoutY="9.0" prefHeight="480.0" prefWidth="380.0">
                      <children>
                         <Label fx:id="mdLabel" layoutY="-34.0" text="Main deck ( M )" />
-                        <ListView fx:id="mdLV" layoutY="-19.0" prefHeight="340.0" prefWidth="380.0" />
-                        <Label fx:id="sdLabel" layoutY="323.0" text="Side deck ( S )" />
-                        <ListView fx:id="sdLV" layoutY="339.0" prefHeight="184.0" prefWidth="380.0" />
+                        <ListView fx:id="mdLV" layoutY="-19.0" prefHeight="386.0" prefWidth="380.0" />
+                        <Label fx:id="sdLabel" layoutY="374.0" text="Side deck ( S )" />
+                        <ListView fx:id="sdLV" layoutY="389.0" prefHeight="245.0" prefWidth="380.0" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane id="editPane" layoutX="412.0" prefHeight="300.0" prefWidth="380.0">
+                  <AnchorPane id="editPane" layoutX="411.0" prefHeight="300.0" prefWidth="380.0">
                      <children>
-                        <AnchorPane id="card info" layoutX="-15.0" layoutY="-10.0" prefHeight="189.0" prefWidth="392.0">
+                        <AnchorPane id="card info" fx:id="cardPane" layoutX="-15.0" layoutY="-10.0" prefHeight="189.0" prefWidth="392.0">
                            <children>
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="220.0" stroke="BLACK" strokeType="INSIDE" width="392.0" />
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="320.0" layoutX="1.0" layoutY="1.0" stroke="BLACK" strokeType="INSIDE" width="391.0" />
                               <Label fx:id="ic1" alignment="TOP_LEFT" layoutX="10.0" layoutY="5.0" prefHeight="39.0" prefWidth="233.0" wrapText="true" />
                               <Label fx:id="ic2" alignment="TOP_RIGHT" layoutX="248.0" layoutY="6.0" prefHeight="39.0" prefWidth="135.0" textAlignment="RIGHT" wrapText="true" />
-                              <Label fx:id="ic3" alignment="TOP_LEFT" layoutX="10.0" layoutY="47.0" prefHeight="39.0" prefWidth="356.0" wrapText="true" />
-                              <Label fx:id="ic4" alignment="TOP_LEFT" layoutX="10.0" layoutY="89.0" prefHeight="93.0" prefWidth="371.0" wrapText="true" />
-                              <Label fx:id="ic5" alignment="CENTER_RIGHT" layoutX="322.0" layoutY="193.0" prefHeight="17.0" prefWidth="60.0" wrapText="true" />
+                              <Label fx:id="ic3" alignment="TOP_LEFT" layoutX="10.0" layoutY="70.0" prefHeight="39.0" prefWidth="371.0" wrapText="true" />
+                              <Label fx:id="ic4" alignment="TOP_LEFT" layoutX="10.0" layoutY="110.0" prefHeight="180.0" prefWidth="371.0" wrapText="true" />
+                              <Label fx:id="ic5" alignment="CENTER_RIGHT" layoutX="322.0" layoutY="296.0" prefHeight="17.0" prefWidth="60.0" wrapText="true" />
+                              <ProgressIndicator fx:id="piLoad" layoutX="4.0" layoutY="298.0" prefHeight="20.0" prefWidth="20.0" visible="false" />
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="-15.0" layoutY="250.0" prefHeight="200.0" prefWidth="200.0">
+                        <VBox alignment="CENTER" layoutX="-14.0" layoutY="-18.0" prefHeight="335.0" prefWidth="390.0">
+                           <children>
+                              <ImageView fx:id="cardImage" fitHeight="335.0" fitWidth="390.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" />
+                           </children>
+                        </VBox>
+                        <AnchorPane layoutX="-15.0" layoutY="350.0" prefHeight="200.0" prefWidth="200.0">
                            <children>
                               <TextField fx:id="cname" layoutY="-30.0" onAction="#find" prefHeight="27.0" prefWidth="190.0" promptText="name" style="-fx-prompt-text-fill: derive(-fx-control-inner-background, -30%)" />
-                              <TextField fx:id="ctype" layoutX="200.0" layoutY="-30.0" prefHeight="27.0" prefWidth="190.0" promptText="type" />
-                              <TextField fx:id="ctext" layoutY="4.0" prefHeight="27.0" prefWidth="392.0" promptText="text" />
-                              <TextField fx:id="coloro" layoutY="38.0" prefHeight="27.0" prefWidth="75.0" promptText="color" />
-                              <TextField fx:id="ccmc" layoutX="112.0" layoutY="38.0" prefHeight="27.0" prefWidth="56.0" promptText="cmc" />
-                              <ComboBox fx:id="cmcBox" layoutX="172.0" layoutY="38.0" prefHeight="27.0" prefWidth="60.0" />
+                              <TextField fx:id="ctype" layoutX="200.0" layoutY="-30.0" onAction="#find" prefHeight="27.0" prefWidth="190.0" promptText="type" />
+                              <TextField fx:id="ctext" layoutY="4.0" onAction="#find" prefHeight="27.0" prefWidth="392.0" promptText="text" />
+                              <TextField fx:id="ccolorID" layoutY="38.0" onAction="#find" prefHeight="27.0" prefWidth="75.0" promptText="colorID" />
+                               <TextField fx:id="ccolor" layoutX="80.0" layoutY="38.0" onAction="#find" prefHeight="27.0" prefWidth="75.0" promptText="color" />
+                              <TextField fx:id="ccmc" layoutX="231.0" layoutY="38.0" onAction="#find" prefHeight="27.0" prefWidth="56.0" promptText="cmc" />
+                              <ComboBox fx:id="cmcBox" layoutX="164.0" layoutY="38.0" prefHeight="27.0" prefWidth="65.0" />
                               <Button layoutX="298.0" layoutY="38.0" mnemonicParsing="false" onAction="#find" prefHeight="27.0" prefWidth="92.0" text="find" />
-                              <ListView fx:id="scLV" layoutY="70.0" prefHeight="212.0" prefWidth="394.0" />
+                              <ListView fx:id="scLV" layoutY="70.0" prefHeight="223.0" prefWidth="394.0" />
                            </children>
                         </AnchorPane>
                      </children>
@@ -117,7 +129,7 @@
 
 
 
-            <AnchorPane id="statsPane" fx:id="stats" layoutY="70.0" visible="false" prefHeight="500.0" prefWidth="800.0">
+            <AnchorPane id="statsPane" fx:id="stats" layoutY="70.0" prefHeight="500.0" prefWidth="800.0" visible="false">
                <children>
                   <StackedBarChart fx:id="manaSBC" animated="false" layoutY="-30.0" prefHeight="300.0" prefWidth="400.0" title="Mana curve">
                     <xAxis>
@@ -127,7 +139,7 @@
                       <NumberAxis fx:id="mclcY" side="LEFT" />
                     </yAxis>
                   </StackedBarChart>
-                  <PieChart fx:id="landsPC" layoutX="396.0" visible="false" layoutY="-30.0" prefHeight="300.0" prefWidth="400.0" title="Lands" />
+                  <PieChart fx:id="landsPC" layoutX="396.0" layoutY="-30.0" prefHeight="300.0" prefWidth="400.0" title="Lands" visible="false" />
                </children>
             </AnchorPane>
 

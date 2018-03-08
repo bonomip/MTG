@@ -7,7 +7,7 @@ import static model.Card.Color.*;
 
 public class Card {
 
-    private static int FIELDSIZE = 12;
+    private static int FIELDSIZE = 13;
 
     public class Color {
         public final static String PLAINS = "1";
@@ -45,6 +45,7 @@ public class Card {
                                 // 9 : power
                                 //10 : toughness
                                 //11 : loyalty
+                                //12 : id
     public boolean[] flag;
 
 
@@ -68,9 +69,9 @@ public class Card {
         if(cmc == null) { flag[2] = false; }
         else { fields[2] = cmc; flag[2] = true; }
 
-        Object color = card.get("colorIdentity");
-        if(color == null) { flag[3] = false; }
-        else { fields[3] = color; flag[3] = true; }
+        Object colorID = card.get("colorIdentity");
+        if(colorID == null) { flag[3] = false; }
+        else { fields[3] = colorID; flag[3] = true; }
 
         Object spTypes = card.get("supertypes");
         if(spTypes == null) { flag[4] = false; }
@@ -103,6 +104,10 @@ public class Card {
         Object loy = card.get("loyalty");
         if(loy == null) { flag[11] = false; }
         else { fields[11] = loy; flag[11] = true; }
+
+        Object id = card.get("id");
+        if(id == null) { flag[12] = false; }
+        else { fields[12] = id; flag[12] = true; }
     }
 
     public Card(String basic_mana){
@@ -197,7 +202,7 @@ public class Card {
 
     public double getConvertedManaCost() { return Double.parseDouble(this.fields[2].toString()); }
 
-    public String[] getColors() { return toStringArray(this.fields[3]); }
+    public String[] getColorID() { return toStringArray(this.fields[3]); }
 
     public String[] get4() { return toStringArray(this.fields[4]); }
 
@@ -217,6 +222,10 @@ public class Card {
 
     public String getPowerOrLoyalty(){
         return this.getPower().length() == 0 ? this.getLoyalty() : this.getPower()+"/"+this.getToughness();
+    }
+
+    public String getId(){
+        return this.flag[12] ? this.fields[12].toString() : "";
     }
 
     private String[] toStringArray(Object o){

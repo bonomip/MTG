@@ -3,10 +3,13 @@ package view;
 import control.Control;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.event.EventHandler;
 import javafx.scene.chart.*;
 import javafx.scene.chart.XYChart.Data;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.util.StringConverter;
 import model.Card;
 import model.Deck;
@@ -17,6 +20,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import view.utils.Err;
+import view.utils.Info;
 
 import java.io.*;
 import java.util.*;
@@ -29,7 +33,8 @@ public class HomeView extends View{
     private Card _card;
 
     @FXML
-    private AnchorPane mgmt, stats, odds;
+    private AnchorPane mgmt, stats, odds,
+            cardPane;
 
     //MGMT
     @FXML
@@ -42,7 +47,9 @@ public class HomeView extends View{
     @FXML
     ComboBox<String> cmcBox;
     @FXML
-    TextField cname, ctype, ctext, ccolor, ccmc;
+    TextField cname, ctype, ctext, ccolorID, ccolor, ccmc;
+    @FXML
+    ImageView cardImage;
 
     //STATISTIC
     @FXML
@@ -69,8 +76,8 @@ public class HomeView extends View{
 
         super.stage = new Stage();
         super.stage.setOnCloseRequest(event -> System.exit(0));
-        super.stage.setScene(new Scene(loader.load(), 800, 640 ) );
-        super.stage.setResizable(false);
+        super.stage.setScene(new Scene(loader.load(), 800, 752 ) );
+        super.stage.setResizable(true);
         super.stage.show();
 
         this.MGMTinit();
@@ -89,7 +96,7 @@ public class HomeView extends View{
 
 
 
-    public void setCurrentDeck(Deck d){
+    public synchronized void setCurrentDeck(Deck d){
 
         if(d == null) this.clear();
 
@@ -99,9 +106,11 @@ public class HomeView extends View{
         this.deckFunction(true);
     }
 
-    private void setCurrentCard(Card c){
+    private synchronized void setCurrentCard(Card c){
+        if(this._card != null)
+            if(this._card.getId().equals(c.getId())) return;
         this._card = c;
-        updateCardInfo();
+        this.updateCardInfo();
     }
 
     int sortby = 0; /*
@@ -123,11 +132,15 @@ public class HomeView extends View{
 
     private ObservableList<Object[]> mainL, sideL;
     private ObservableList<Card> searchL;
+    private Thread loadImage;
+    @FXML
+    private ProgressIndicator piLoad;
 
     private void MGMTinit(){
             this.mainL = FXCollections.observableArrayList();
             mdLV.setItems(this.mainL);
             mdLV.setCellFactory(param -> new LVCGeneric());
+            this.mdLV.set
 
             this.sideL = FXCollections.observableArrayList();
             sdLV.setItems(this.sideL);
@@ -136,6 +149,13 @@ public class HomeView extends View{
             this.searchL = FXCollections.observableArrayList();
             scLV.setItems(this.searchL);
             scLV.setCellFactory(param -> new LVCAdding());
+
+            this.cardImage.setPreserveRatio(true);
+
+            this.cmcBox.setItems(cmcParams);
+            this.cmcBox.setValue(cmcParams.get(0));
+
+            this.loadImage = new Thread();
         }
 
     private void MGMTclear(){
@@ -143,7 +163,7 @@ public class HomeView extends View{
         this.sideL.clear();
         mdLabel.setText("Main deck ( M )");
         sdLabel.setText("Side deck ( S )");
-
+        this.cardImage.setVisible(false);
         this.clearCardInfo();
     }
 
@@ -193,13 +213,48 @@ public class HomeView extends View{
         }
 
     private void updateCardInfo(){
-            ic1.setText(_card.getName());
-            ic2.setText(_card.getManaCost());
-            ic3.setText(_card.getFullType());
-            //todo adattare testo alla label evitando troncamenti
-            ic4.setText(_card.getText());
-            ic5.setText(_card.getPowerOrLoyalty());
-        }
+        this.cardPane.setVisible(true);
+        this.cardImage.setVisible(false);
+
+        ic1.setText(_card.getName());
+        ic2.setText(_card.getManaCost());
+        ic3.setText(_card.getFullType());
+        ic4.setText(_card.getText());
+        ic5.setText(_card.getPowerOrLoyalty());
+
+        if(loadImage != null)
+            if(loadImage.isAlive())
+                if(loadImage.getName().equals(this._card.getId()))
+                    return;
+                else
+                    loadImage.interrupt();
+
+        Task<Boolean>  task = new Task<Boolean>() {
+            @Override
+            protected Boolean call() throws Exception {
+                return ctrl.downloadImage(_card.getId()); }
+        };
+        task.setOnSucceeded(event -> piLoad.setVisible(false));
+        task.setOnCancelled(event -> piLoad.setVisible(false));
+        task.setOnFailed(event -> piLoad.setVisible(false));
+        task.setOnRunning(event -> piLoad.setVisible(true));
+
+        this.piLoad.progressProperty().bind(task.progressProperty());
+
+        this.loadImage = new Thread(task);
+        this.loadImage.setName(_card.getId());
+        this.loadImage.start();
+    }
+
+    public synchronized void updateImage(Image i, String card_id){
+        if(!this._card.getId().equals(card_id)) return;
+
+        this.cardPane.setVisible(false);
+        this.cardImage.setVisible(true);
+
+        this.cardImage.setId(card_id);
+        this.cardImage.setImage(i);
+    }
 
     private void clearDeckPane(){
             _deck = null;
@@ -268,12 +323,11 @@ public class HomeView extends View{
 
     public void find(ActionEvent event){
 
-            String s = this.cname.getText();
+            if(this.ccmc.getText().length() > 0 && !Err.isNumber(this.ccmc.getText())) return;
 
-            if( !this.ctrl.findCardsByName(s) ) Err.show(Err.NOTHING_FOUND);
-            //todo altri tipi di ricerca
-
-        }
+            if (!this.ctrl.findCards(this.cname.getText(), this.ctype.getText(), this.ctext.getText(), this.ccolorID.getText(), this.ccolor.getText(), this.ccmc.getText(), this.cmcBox.getValue()))
+                Err.show(Err.NOTHING_FOUND);
+    }
 
     public void updateSearchList(ArrayList<Card> card_list){
             this.scLV.getItems().clear();
@@ -516,7 +570,7 @@ public class HomeView extends View{
 
             System.out.println(c.getName()+" "+n);
 
-            for( String col : c.getColors() )
+            for( String col : c.getColorID() )
                 switch (col){
                     case "W": land[0] += n; break;
                     case "U": land[1] += n; break;
@@ -524,7 +578,7 @@ public class HomeView extends View{
                     case "R": land[3] += n; break;
                     case "G": land[4] += n; break;
                     case "C": land[5] += n; break;
-                    default: land[6] += n; break;
+                    default: land[5] += n; break;
                 }
         }
 
@@ -586,11 +640,14 @@ public class HomeView extends View{
 
     @FXML
     private Menu openDeckMenu, editMenu, SBCPrefMenu, deckPrefMenu;
+    @FXML
+    private MenuItem infoSearch, aboutApp;
 
     private void setUpMenuItems(){
         this.updateOpenMenu();
         this.setUpSBCPrefMenu();
         this.setUpDeckPref();
+        this.setUpHelpMenu();
     }
 
     private void setUpDeckPref(){
@@ -687,6 +744,11 @@ public class HomeView extends View{
         this.SBCPrefMenu.getItems().addAll(nosplit);
     }
 
+    private void setUpHelpMenu(){
+        infoSearch.setOnAction(event -> Info.showSearchFunctionInfo());
+        aboutApp.setOnAction(event -> Info.showAboutApp());
+    }
+
     public void updateOpenMenu(){
         openDeckMenu.getItems().clear();
 
@@ -698,6 +760,7 @@ public class HomeView extends View{
             MenuItem m = new MenuItem(d[i]);
             m.setOnAction(event -> {
                 if( !ctrl.openDeck(m.getText()) ) { Err.show(Err.FILE_NOT_FOUND); return; }
+
                 showMgmtPane(new ActionEvent());
             });
             openDeckMenu.getItems().add(m);
@@ -712,6 +775,10 @@ public class HomeView extends View{
             try { this.ndPop.show(); } catch (IOException e) { e.printStackTrace(); }
 
         } else { this.ndPop.stage.requestFocus(); }
+    }
+
+    public void massEntry(){
+            Info.showMassEntry(this.ctrl, this._deck);
     }
 
     public void saveDeck(ActionEvent event){

@@ -1,8 +1,11 @@
 package model;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import view.View;
+import view.utils.Info;
 
 import java.io.*;
 import java.util.*;
@@ -15,6 +18,15 @@ public class Model {
     private final static String SEPARATOR = "~";
 
     private static JSONObject CARD_DB;
+
+    public class Key {
+        public static final String NAME = "name";
+        public static final String TEXT = "text";
+        public static final String TYPE = "type";
+        public static final String COLOR = "colors";
+        public static final String COLORID = "colorIdentity";
+        public static final String CMC = "cmc";
+    }
 
     public Model() throws FileNotFoundException, ParseException, IOException {
         Object o = new JSONParser().parse(new FileReader("db.json"));
@@ -36,16 +48,12 @@ public class Model {
      */
     private Card findCardByName(String card_name){
 
-        Set e = CARD_DB.keySet();
-        Object[] keys = e.toArray();
+        Object o = CARD_DB.get(card_name);
 
-        for(int i = 0; i < keys.length; i++)
-            if(keys[i].toString().matches(card_name))
-                return new Card((JSONObject) CARD_DB.get(keys[i]));
+        if(o == null) { System.out.println("No match for the card: "+card_name); return null; }
 
-        System.out.println("No match for the card: "+card_name);
+        return new Card((JSONObject)o);
 
-        return null;
     }
 
     /**
@@ -56,17 +64,172 @@ public class Model {
      * @return
      */
     public ArrayList<Card> findCardsByName(String card_name){
-
         ArrayList<Card> cardL = new ArrayList<>();
 
-        Set e = CARD_DB.keySet();
-        Object[] keys = e.toArray();
-
-        for(int i = 0; i < keys.length; i++)
-            if(keys[i].toString().toUpperCase().contains(card_name.toUpperCase()))
-                cardL.add(new Card((JSONObject) CARD_DB.get(keys[i])));
+        for(Object key : CARD_DB.keySet().toArray())
+            if(key.toString().toUpperCase().contains(card_name.toUpperCase()))
+                cardL.add(new Card((JSONObject) CARD_DB.get(key)));
 
         return cardL;
+    }
+
+    public ArrayList<Card> findCards(List<String[]> params){
+
+        ArrayList<Card> r = new ArrayList<>();
+
+        if(params.size() == 0) return r;
+
+        for ( Object set : CARD_DB.keySet().toArray() ){
+
+            boolean match = true;
+            JSONObject card = (JSONObject) CARD_DB.get(set);
+
+            for (String[] p : params ){
+                if(!match) break;
+                switch( p[0] ){
+                    case Key.NAME:
+                        match = card.get("name").toString().toUpperCase().contains(p[1].toUpperCase());
+                        break;
+                    case Key.TEXT:
+                        match = card.get("text") != null && card.get("text").toString().toUpperCase().contains(p[1].toUpperCase());
+                        break;
+                    case Key.TYPE:
+                        match = typeMatch(card, p[1]);
+                        break;
+                    case Key.COLORID:
+                        match = colorIdentityMatch(card, p[1]);
+                        break;
+                    case Key.COLOR:
+                        match = colorMatch(card, p[1]);
+                        break;
+                    case Key.CMC:
+                        match = cmcMatch(card, p[1], p[2]);
+                        break;
+                }
+            }
+            if(match) r.add(new Card(card));
+        }
+        return r;
+    }
+
+    private static boolean typeMatch(JSONObject card, String toFind){
+        String temp = (String) card.get("type");
+        if(temp == null || temp.equals("")) return false;
+
+        temp = " "+temp+" ";
+        temp.replace("-", " ");
+
+        String[] types = toFind.trim().split("\\s+");
+
+        for(int i = 0; i < types.length; i++)
+            if(!temp.toUpperCase().contains(" "+types[i].toUpperCase()+" "))
+                return false;
+
+        return true;
+    }
+
+    private static boolean colorIdentityMatch(JSONObject card, String toFind){
+        JSONArray tempA = (JSONArray) card.get("colorIdentity");
+
+        if(tempA == null && toFind.toUpperCase().equals("C"))
+            return true;
+        else if(tempA == null)
+            return false;
+
+        Object[] tempB = tempA.toArray();
+        StringBuilder colors = new StringBuilder();
+
+        for (int i = 0; i < tempB.length; i++)
+            colors.append(tempB[i].toString());
+
+        if(toFind.substring(0, 1).equals("!")){ //ricerca per carte contentni SOLO i colori indicati
+
+            if( colors.length() != toFind.length()-1 )
+                return false;
+
+            for(int i = 1; i < toFind.length(); i++)
+                if(!colors.toString().contains(toFind.substring(i, i+1).toUpperCase()))
+                    return false;
+
+        } else { //ricerca per carte contenenti i colori indicati
+
+            for(int i = 0; i < toFind.length(); i++)
+                if(!colors.toString().contains(toFind.substring(i, i+1).toUpperCase()))
+                    return false;
+        }
+        return true;
+    }
+
+    private static boolean colorMatch(JSONObject card, String toFind){
+        JSONArray tempA = (JSONArray) card.get("colors");
+
+        if(tempA == null && toFind.toUpperCase().equals("C"))
+            return true;
+        else if(tempA == null)
+            return false;
+
+        Object[] tempB = tempA.toArray();
+        StringBuilder colors = new StringBuilder();
+
+        for (int i = 0; i < tempB.length; i++) {
+            switch (tempB[i].toString()){
+                case Colors.BLACK:
+                    colors.append("B");
+                    break;
+                case Colors.BLUE:
+                    colors.append("U");
+                    break;
+                case Colors.GREEN:
+                    colors.append("G");
+                    break;
+                case Colors.RED:
+                    colors.append("R");
+                    break;
+                case Colors.WHITE:
+                    colors.append("W");
+                    break;
+                    default:
+                        colors.append("C");
+            }
+        }
+
+        if(toFind.substring(0, 1).equals("!")){ //ricerca per carte contentni SOLO i colori indicati
+
+            if( colors.length() != toFind.length()-1 )
+                return false;
+
+            for(int i = 1; i < toFind.length(); i++)
+                if(!colors.toString().contains(toFind.substring(i, i+1).toUpperCase()))
+                    return false;
+
+        } else { //ricerca per carte contenenti i colori indicati
+
+            for(int i = 0; i < toFind.length(); i++)
+                if(!colors.toString().contains(toFind.substring(i, i+1).toUpperCase()))
+                    return false;
+        }
+        return true;
+    }
+
+    private static boolean cmcMatch(JSONObject card, String cmc, String par){
+            String s = card.get("cmc").toString();
+            double x = Double.parseDouble(s);
+            int y = Integer.parseInt(cmc);
+
+            switch (par){
+                case "<":
+                    return x < y;
+                case "<=":
+                    return x <= y;
+                case "=":
+                    return x == y;
+                case ">=":
+                    return x >= y;
+                case ">":
+                    return x > y;
+            }
+
+            return false;
     }
 
 
@@ -213,5 +376,27 @@ public class Model {
         File deck = new File(path);
 
         return deck.delete();
+    }
+
+    public ArrayList<Object[]> processMassEntry(String mass){
+        ArrayList<Object[]> result = new ArrayList<>();
+
+        String[] temp = mass.split("\n|\r");
+
+        for(int i = 0; i < temp.length; i++){
+            String number = "";
+            String name;
+
+            int j = 0;
+
+            while(Character.isDigit(temp[i].charAt(j))){ number += temp[i].substring(j, j+1); j++; }
+            name = temp[i].substring(j+1, temp[i].length());
+
+            Card card = findCardByName(name);
+            result.add(new Object[]{ card, number, "M" });
+
+            }
+
+        return result;
     }
 }

@@ -1,6 +1,8 @@
 package control;
 
+import io.magicthegathering.javasdk.api.CardAPI;
 import javafx.scene.control.ButtonType;
+import javafx.scene.image.Image;
 import model.*;
 import org.json.simple.parser.ParseException;
 import view.NewDeck;
@@ -59,13 +61,30 @@ public class Control {
 
     //CARD SEARCH
 
-    public boolean findCardsByName(String card_name){
+    public boolean downloadImage(String card_id){
+        Image i = new Image(CardAPI.getCard(card_id).getImageUrl());
 
-        if(card_name.length() == 0) return true;
+        System.out.println(i.getHeight()+" "+i.getWidth()+" "+i.isError()+"\n"+CardAPI.getCard(card_id).getImageUrl());
 
-        ArrayList<Card> cardL;
+        if(i.isError()) return false;
 
-        cardL = this.model.findCardsByName(card_name);
+        this.home.updateImage(i, Thread.currentThread().getName());
+
+        return true;
+    }
+
+    public boolean findCards(String card_name, String type, String text, String colorID, String color, String cmc, String comboBox){
+
+        ArrayList<String[]> l = new ArrayList<>();
+
+        if(card_name.length() > 0) l.add(new String[]{ Model.Key.NAME, card_name });
+        if(type.length() > 0) l.add(new String[]{ Model.Key.TYPE, type });
+        if(text.length() > 0) l.add(new String[]{ Model.Key.TEXT, text });
+        if(colorID.length() > 0) l.add(new String[]{ Model.Key.COLORID, colorID });
+        if(color.length() > 0) l.add(new String[]{ Model.Key.COLOR, color });
+        if(cmc.length() > 0) l.add(new String[]{ Model.Key.CMC, cmc, comboBox });
+
+        ArrayList<Card> cardL = this.model.findCards(l);
 
         if(cardL == null) return false;
         if(cardL.size() == 0) return false;
@@ -75,7 +94,6 @@ public class Control {
         this.home.updateSearchList(cardL);
 
         return true;
-
     }
 
 
@@ -97,6 +115,7 @@ public class Control {
 
         if( deck == null ) return false;
 
+        this.home.clear();
         this.home.setCurrentDeck(deck);
         this.home.updateDeckList();
 
@@ -152,6 +171,12 @@ public class Control {
                 this.home.clear();
             }
             else Err.show(Err.UNKNOWN);
+    }
+
+    public void processMassEntry(String mass, Deck deck){
+        ArrayList<Object[]> cardL = this.model.processMassEntry(mass);
+        for(Object[] o : cardL)
+            addCard(o, deck);
     }
 
     public void removeCard(Object[] card, Deck deck){

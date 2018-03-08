@@ -1,9 +1,13 @@
 <component name="ArtifactManager">
   <artifact type="jar" name="MTG:jar">
-    <output-path>$PROJECT_DIR$/</output-path>
+    <output-path>$PROJECT_DIR$/out/artifacts/MTG_jar</output-path>
     <root id="archive" name="MTG.jar">
       <element id="module-output" name="MTG" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/json-simple-1.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/javasdk-0.0.10.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/gson-2.8.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/okhttp-3.4.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/okio-1.9.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/json-simple-1.1.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>
