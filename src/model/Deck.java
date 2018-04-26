@@ -169,7 +169,9 @@ public class Deck {
         return result;
     }
 
-
+//todo creare metodo che restituisce numero di carte di un certo tipo
+    // 1 che splitta i tipi
+    // 1 che non li splitta
 
     public void addCard(Object[] card){
         if(card[0] == null) return;

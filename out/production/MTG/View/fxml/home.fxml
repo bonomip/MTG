@@ -20,7 +20,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 
-<VBox prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="749.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
   <children>
 
 
@@ -49,7 +49,7 @@
             <items>
                 <Menu fx:id="deckPrefMenu" disable="true" mnemonicParsing="false" text="Deck">
                 </Menu>
-              <Menu fx:id="SBCPrefMenu" disable="true" mnemonicParsing="false" text="Stacked Bar Chart">
+              <Menu fx:id="CTypePrefMenu" disable="true" mnemonicParsing="false" text="Card Types">
               </Menu>
             </items>
         </Menu>
@@ -78,7 +78,7 @@
 
 
 
-            <AnchorPane id="mgmtPane" fx:id="mgmt" layoutY="70.0" prefHeight="650.0" prefWidth="800.0" visible="true">
+            <AnchorPane id="mgmtPane" fx:id="mgmt" layoutY="70.0" prefHeight="650.0" prefWidth="800.0">
                <children>
                   <AnchorPane id="deckPane" layoutX="10.0" layoutY="9.0" prefHeight="480.0" prefWidth="380.0">
                      <children>
@@ -139,7 +139,25 @@
                       <NumberAxis fx:id="mclcY" side="LEFT" />
                     </yAxis>
                   </StackedBarChart>
-                  <PieChart fx:id="landsPC" layoutX="396.0" layoutY="-30.0" prefHeight="300.0" prefWidth="400.0" title="Lands" visible="false" />
+
+                  <PieChart fx:id="landsPC" layoutX="396.0" layoutY="-30.0" prefHeight="300.0" prefWidth="400.0" title="Lands" visible="true" legendVisible="false" />
+
+                  <Label fx:id="nA" layoutX="30.0" layoutY="300.0" text="Artifacts:" />
+                  <Label fx:id="nC" layoutX="30.0" layoutY="320.0" text="Creatures:" />
+                  <Label fx:id="nE" layoutX="30.0" layoutY="340.0" text="Enchantments:" />
+                  <Label fx:id="nI" layoutX="30.0" layoutY="360.0" text="Instant" />
+                  <Label fx:id="nL" layoutX="30.0" layoutY="380.0" text="Lands:" />
+                   <Label fx:id="nP" layoutX="30.0" layoutY="400.0" text="PlanesWalkers:" />
+                  <Label fx:id="nS" layoutX="30.0" layoutY="420.0" text="Sorceries:" />
+                  <Label fx:id="avgCMC" layoutX="30.0" layoutY="560.0" text="Average nonlands cmc:" />
+                  <Label fx:id="nAC" layoutX="30.0" layoutY="450.0" text="Artifact Creatures:" />
+                  <Label fx:id="nEC" layoutX="30.0" layoutY="510.0" text="Enchantment Creatures:" />
+                  <Label fx:id="nAL" layoutX="30.0" layoutY="470.0" text="Artifact Lands: " />
+                  <Label fx:id="nEA" layoutX="30.0" layoutY="490.0" text="Enchantment Artifacts:" />
+                  <Label fx:id="nLC" layoutX="30.0" layoutY="530.0" text="Land Creatures:" />
+
+                  <PieChart fx:id="manaColorPC" layoutX="396.0" layoutY="310.0" prefHeight="300.0" prefWidth="400.0" title="Mana Color" visible="true" />
+
                </children>
             </AnchorPane>
 

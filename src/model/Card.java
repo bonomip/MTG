@@ -200,7 +200,7 @@ public class Card {
     public String getManaCost() {
         return this.flag[1] ? this.fields[1].toString() : ""; }
 
-    public double getConvertedManaCost() { return Double.parseDouble(this.fields[2].toString()); }
+    public double getConvertedManaCost() { return this.flag[2] ? Double.parseDouble(this.fields[2].toString()) : 0; }
 
     public String[] getColorID() { return toStringArray(this.fields[3]); }
 

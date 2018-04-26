@@ -10,6 +10,7 @@ import javafx.scene.chart.XYChart.Data;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
 import javafx.util.StringConverter;
 import model.Card;
 import model.Deck;
@@ -123,7 +124,7 @@ public class HomeView extends View{
 
     private void setUpPreferences(){
         this.sortby = 0;
-        this.SBCSplitTypes = false;
+        this.splitTypes_pref = false;
         this.asc = true;
     }
 
@@ -396,7 +397,9 @@ public class HomeView extends View{
 
     // STATISTIC
 
-    private boolean SBCSplitTypes;
+    private boolean splitTypes_pref;
+
+    @FXML Label nA, nC, nE, nI, nL, nP, nS, nAC, nEC, nAL, nEA, nLC, avgCMC;
 
     private void setUpStatsPane(){
         this.setUpManaBarChart();
@@ -424,6 +427,11 @@ public class HomeView extends View{
         this.mclcY.setAutoRanging(false);
     }
 
+    private void cardTypeShowChanged(){
+        this.updateManaBarChart();
+        this.updateDeckStats();
+    }
+
     private void updateManaBarChart(){
         this.manaSBC.getData().clear();
 
@@ -435,7 +443,7 @@ public class HomeView extends View{
         this.mclcX.invalidateRange(this.mclcX.getCategories());
         this.mclcY.setUpperBound(getYRange(this._deck.getMainCardList())+1);
 
-        if(!SBCSplitTypes) { //merge types
+        if(!splitTypes_pref) { //merge types
             setSpecificSeries(Card.Type.CREATURE,"Creatures", this._deck, this.manaSBC);
             setSpecificSeries(Card.Type.INSTANT,"Instants", this._deck, this.manaSBC);
             setSpecificSeries(Card.Type.SORCERY,"Sorceries", this._deck, this.manaSBC);
@@ -586,12 +594,98 @@ public class HomeView extends View{
         for(int i = 0; i < land.length; i++)
             if(land[i] > 0){
                 data.add(new PieChart.Data(name[i], (double)land[i]/(double)count*100));
-                System.out.println(name[i]+" "+((double)land[i]/(double)count)*100);
+                //System.out.println(name[i]+" "+((double)land[i]/(double)count)*100);
         }
 
         this.landsPC.setData(data);
+
+        for ( PieChart.Data d : this.landsPC.getData() ){
+            if( d.getName() == name[0] ) d.getNode().setStyle("-fx-pie-color: white;");
+            if( d.getName() == name[1] ) d.getNode().setStyle("-fx-pie-color: blue;");
+            if( d.getName() == name[2] ) d.getNode().setStyle("-fx-pie-color: black;");
+            if( d.getName() == name[3] ) d.getNode().setStyle("-fx-pie-color: red;");
+            if( d.getName() == name[4] ) d.getNode().setStyle("-fx-pie-color: green;");
+        }
     }
 
+    private void updateDeckStats(){
+        int c = 0;
+        if(!splitTypes_pref){
+            for ( Object[] o : this._deck.getCardListOfSpecifiedType(this._deck.getMainCardList(), Card.Type.ARTIFACT) ) c += Integer.parseInt(o[1].toString());
+            nA.setText("Artifacts: "+c);
+            c = 0;
+            for ( Object[] o : this._deck.getCardListOfSpecifiedType(this._deck.getMainCardList(), Card.Type.CREATURE) ) c += Integer.parseInt(o[1].toString());
+            nC.setText("Creatures: "+c);
+            c = 0;
+            for ( Object[] o : this._deck.getCardListOfSpecifiedType(this._deck.getMainCardList(), Card.Type.ENCHANTMENT) ) c += Integer.parseInt(o[1].toString());
+            nE.setText("Enchantments: "+c);
+            c = 0;
+            for ( Object[] o : this._deck.getCardListOfSpecifiedType(this._deck.getMainCardList(), Card.Type.INSTANT) ) c += Integer.parseInt(o[1].toString());
+            nI.setText("Instants: "+c);
+            c = 0;
+            for ( Object[] o : this._deck.getCardListOfSpecifiedType(this._deck.getMainCardList(), Card.Type.LAND) ) c += Integer.parseInt(o[1].toString());
+            nL.setText("Lands: "+c);
+            c = 0;
+            for ( Object[] o : this._deck.getCardListOfSpecifiedType(this._deck.getMainCardList(), Card.Type.PLANESWALKER) ) c += Integer.parseInt(o[1].toString());
+            nP.setText("Planeswalkers: "+c);
+            c = 0;
+            for ( Object[] o : this._deck.getCardListOfSpecifiedType(this._deck.getMainCardList(), Card.Type.SORCERY) ) c += Integer.parseInt(o[1].toString());
+            nS.setText("Sorceries: "+c);
+
+            nAC.setText("");
+            nEC.setText("");
+            nAL.setText("");
+            nEA.setText("");
+            nLC.setText("");
+
+        } else {
+            for ( Object[] o : this._deck.getCardListOfGenericType(this._deck.getMainCardList(), Card.Type.ARTIFACT) ) c += Integer.parseInt(o[1].toString());
+            nA.setText("Artifacts: "+c);
+            c = 0;
+            for ( Object[] o : this._deck.getCardListOfGenericType(this._deck.getMainCardList(), Card.Type.CREATURE) ) c += Integer.parseInt(o[1].toString());
+            nC.setText("Creatures: "+c);
+            c = 0;
+            for ( Object[] o : this._deck.getCardListOfGenericType(this._deck.getMainCardList(), Card.Type.ENCHANTMENT) ) c += Integer.parseInt(o[1].toString());
+            nE.setText("Enchantments: "+c);
+            c = 0;
+            for ( Object[] o : this._deck.getCardListOfGenericType(this._deck.getMainCardList(), Card.Type.INSTANT) ) c += Integer.parseInt(o[1].toString());
+            nI.setText("Instants: "+c);
+            c = 0;
+            for ( Object[] o : this._deck.getCardListOfGenericType(this._deck.getMainCardList(), Card.Type.LAND) ) c += Integer.parseInt(o[1].toString());
+            nL.setText("Lands: "+c);
+            c = 0;
+            for ( Object[] o : this._deck.getCardListOfSpecifiedType(this._deck.getMainCardList(), Card.Type.PLANESWALKER) ) c += Integer.parseInt(o[1].toString());
+            nP.setText("Planeswalkers: "+c);
+            c = 0;
+            for ( Object[] o : this._deck.getCardListOfSpecifiedType(this._deck.getMainCardList(), Card.Type.SORCERY) ) c += Integer.parseInt(o[1].toString());
+            nS.setText("Sorceries: "+c);
+            c = 0;
+            for ( Object[] o : this._deck.getCardListOfSpecifiedType(this._deck.getMainCardList(), Card.Type.ARTIFACT_CREATURE) ) c += Integer.parseInt(o[1].toString());
+            nAC.setText("Artifact Creatures: "+c);
+            c = 0;
+            for ( Object[] o : this._deck.getCardListOfSpecifiedType(this._deck.getMainCardList(), Card.Type.ENCHANTMENT_CREATURE) ) c += Integer.parseInt(o[1].toString());
+            nEC.setText("Enchentment Creatures: "+c);
+            c = 0;
+            for ( Object[] o : this._deck.getCardListOfSpecifiedType(this._deck.getMainCardList(), Card.Type.ARTIFACT_LAND) ) c += Integer.parseInt(o[1].toString());
+            nAL.setText("Artifact Lands: "+c);
+            c = 0;
+            for ( Object[] o : this._deck.getCardListOfSpecifiedType(this._deck.getMainCardList(), Card.Type.ENCHANTMENT_ARTIFACT) ) c += Integer.parseInt(o[1].toString());
+            nEA.setText("Enchantment Artifacts: "+c);
+            c = 0;
+            for ( Object[] o : this._deck.getCardListOfSpecifiedType(this._deck.getMainCardList(), Card.Type.LAND_CREATURE) ) c += Integer.parseInt(o[1].toString());
+            nLC.setText("Land Creature: "+c);
+        }
+
+        //update average cmc
+        double avgCount = 0;
+        double avgSum = 0;
+        for ( Object[] o: this._deck.getMainCardList() ){
+            Card cr = (Card) o[0];
+            int i = Integer.parseInt(o[1].toString());
+            if(!cr.is(Card.Type.LAND)) { avgCount += i; avgSum += cr.getConvertedManaCost()*i;  }
+        }
+        this.avgCMC.setText("Average nonlands cmc: "+avgSum/avgCount);
+    }
 
     // ODDS
 
@@ -617,6 +711,8 @@ public class HomeView extends View{
             x *= list.size();
             Card card = list.get((int) x);
             rh[i].setText(card.getName()+"\t"+card.getManaCost());
+            if(card.is(Card.Type.LAND)) rh[i].setTextFill(Color.GOLD);
+            else rh[i].setTextFill(Color.BLACK);
             list.remove(card);
         }
 
@@ -638,7 +734,7 @@ public class HomeView extends View{
     // MENU
 
     @FXML
-    private Menu openDeckMenu, editMenu, SBCPrefMenu, deckPrefMenu;
+    private Menu openDeckMenu, editMenu, CTypePrefMenu, deckPrefMenu;
     @FXML
     private MenuItem infoSearch, aboutApp;
 
@@ -721,26 +817,26 @@ public class HomeView extends View{
 
     private void setUpSBCPrefMenu(){
         ToggleGroup t = new ToggleGroup();
-        RadioMenuItem split = new RadioMenuItem("Split types");
-        RadioMenuItem nosplit = new RadioMenuItem("Merge types");
+        RadioMenuItem split = new RadioMenuItem("Split");
+        RadioMenuItem nosplit = new RadioMenuItem("Merge");
         split.setToggleGroup(t);
-        split.setSelected(this.SBCSplitTypes);
+        split.setSelected(this.splitTypes_pref);
         split.setOnAction(event -> {
             RadioMenuItem r = (RadioMenuItem) event.getSource();
-            if(r.isSelected()) SBCSplitTypes = true;
-            if( stats.isVisible() ) updateManaBarChart();
+            if(r.isSelected()) splitTypes_pref = true;
+            if( stats.isVisible() ) this.cardTypeShowChanged();
         });
         nosplit.setToggleGroup(t);
-        nosplit.setSelected(!this.SBCSplitTypes);
+        nosplit.setSelected(!this.splitTypes_pref);
         nosplit.setOnAction(event -> {
             RadioMenuItem r = (RadioMenuItem) event.getSource();
-            if(r.isSelected()) SBCSplitTypes = false;
-            if( stats.isVisible() ) updateManaBarChart();
+            if(r.isSelected()) splitTypes_pref = false;
+            if( stats.isVisible() ) this.cardTypeShowChanged();
         });
 
 
-        this.SBCPrefMenu.getItems().addAll(split);
-        this.SBCPrefMenu.getItems().addAll(nosplit);
+        this.CTypePrefMenu.getItems().addAll(split);
+        this.CTypePrefMenu.getItems().addAll(nosplit);
     }
 
     private void setUpHelpMenu(){
@@ -816,6 +912,7 @@ public class HomeView extends View{
 
         this.updateManaBarChart();
         this.updatePieChart();
+        this.updateDeckStats();
     }
 
 
@@ -842,7 +939,7 @@ public class HomeView extends View{
 
     public void deckFunction(boolean enable){
         this.editMenu.setDisable(!enable);
-        this.SBCPrefMenu.setDisable(!enable);
+        this.CTypePrefMenu.setDisable(!enable);
         this.deckPrefMenu.setDisable(!enable);
 
         this.statsButton.setDisable(!enable);
